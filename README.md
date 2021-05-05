@@ -1,12 +1,23 @@
 # <p align="center">COURSE_NAME 💀</p>
 
 <p align="center">
-<img src="https://img.shields.io/badge/php-8.0-green" alt="PHP"/>
+    <img src="https://img.shields.io/badge/php-8.0-green" alt="PHP"/>
+    <img src="https://img.shields.io/badge/Code-Go-informational?style=flat-square&logo=go&color=00ADD8" alt="Go" />
+    <img src="https://img.shields.io/badge/Code-PHP-informational?style=flat-square&logo=php&color=777bb4&logoColor=8892BF" alt="PHP" />
+    <img src="https://img.shields.io/badge/Code-Laravel-informational?style=flat-square&logo=laravel&color=FF2D20" alt="Laravel" />
+    <img src="https://img.shields.io/badge/Code-Lumen-informational?style=flat-square&logo=lumen&color=F4645F" alt="Lumen" />
+    <img src="https://img.shields.io/badge/Code-JavaScript-informational?style=flat-square&logo=javascript&color=F7DF1E" alt="JavaScript" />
+    <img src="https://img.shields.io/badge/Code-NodeJS-informational?style=flat-square&logo=node.js&color=339933" alt="NodeJS" />
+    <img src="https://img.shields.io/badge/Tools-Docker-informational?style=flat-square&logo=docker&color=2496ED" alt="Docker" />
+    <img src="https://img.shields.io/badge/Tools-MySQL-informational?style=flat-square&logo=mysql&color=4479A1&logoColor=2496ED" alt="MySQL" />
+    <img src="https://img.shields.io/badge/Tools-SQLServer-informational?style=flat-square&logo=microsoft-sql-server&color=CC2927&logoColor=CC2927" alt="SQLServer" />
+    <img src="https://img.shields.io/badge/OS-Linux-informational?style=flat-square&logo=linux&color=FCC624" alt="Linux" />
+    <img src="https://img.shields.io/badge/OS-WSL2-ormational?style=flat-square&logo=linux&color=0872CA" alt="WSL2" />
 </p>
 
 ## 💬 About
 
-This project was developed following School of Net [COURSE_NAME](https://couse_link.com) course.
+This project was developed following [COURSE_NAME](https://couse_link.com) course.
 
 ## :computer: Technologies
 
@@ -26,13 +37,7 @@ git clone [PROJECT_REPO_LINK]
 cd [PROJECT_REPO_NAME]
 ```
 
-```sh
-./bin/runenv.sh
-```
-
 ## :runner: Running
-
-**Up app**
 
 ```sh
 ./bin/runenv.sh
@@ -43,7 +48,7 @@ cd [PROJECT_REPO_NAME]
 After up the container:
 
 ```sh
-docker exec -t CONTAINER_NAME ./vendor/bin/phpunit --testdox
+docker exec -t [CONTAINER_NAME] ./vendor/bin/phpunit
 ```
 
 ## Contributing
@@ -67,6 +72,5 @@ Please make sure to update tests as appropriate.
 ---
 
 <p align="center">
-Done with ♥ by <a style="font-weight: bold" href="https://www.linkedin.com/in/filipe1309/">Filipe Leuch Bonfim</a> 🖖
-
+    Done with ♥ by <a style="font-weight: bold" href="https://www.linkedin.com/in/filipe1309/">Filipe Leuch Bonfim</a> 🖖
 </p>
