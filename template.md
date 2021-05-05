@@ -1,4 +1,4 @@
-# <p align="center">[WIP] GitHub Skeleton Course Generator 💀</p>
+# <p align="center">[COURSE_NAME] 💀</p>
 
 <p align="center">
     <img src="https://img.shields.io/badge/php-8.0-green" alt="PHP"/>
@@ -19,21 +19,17 @@
 
 ## 💬 About
 
-This project aims to be a skeleton for course projects deployed on GitHub.
-
-### Components that are generated:
-
--   [x] README.md
--   [x] notes.md
--   [x] Deploy script (optional)
--   [x] Pre-push script (optional)
--   [x] Docker scripts & images (optional)
+This project was developed following [[COURSE_NAME]]([COURSE_LINK]) course.
 
 ## :computer: Technologies
 
 -   [Docker](https://www.docker.com/)
 -   [Docker Compose](https://docs.docker.com/compose/)
--   [Shell Script](https://www.shellscript.sh/)
+-   [Dockerize](https://github.com/jwilder/dockerize)
+-   [Node.js](https://nodejs.org/en/)
+-   [Nginx](https://www.nginx.com/)
+-   [MySQL](https://www.mysql.com/)
+-   [Node MySQL2](https://www.npmjs.com/package/mysql2)
 
 ## :scroll: Requirements
 
@@ -42,20 +38,26 @@ This project aims to be a skeleton for course projects deployed on GitHub.
 ## :cd: Installation
 
 ```sh
-git clone git@github.com:filipe1309/skeleton-courses.git
+git clone [PROJECT_REPO_LINK]
 ```
 
 ```sh
-cd skeleton-courses
+cd [PROJECT_REPO_NAME]
 ```
 
-## :runner: Generating the skeleton to your project
+## :runner: Running
 
 ```sh
-./bin/generate.sh
+./bin/runenv.sh
 ```
 
-Then copy the file on `gen` folder into yout project root folder.
+## :white_check_mark: Tests
+
+After up the container:
+
+```sh
+docker exec -t [CONTAINER_NAME] ./vendor/bin/phpunit
+```
 
 ## Contributing
 
