@@ -2,6 +2,8 @@
 
 <p align="center">
     <img src="https://img.shields.io/badge/php-8.0-green" alt="PHP"/>
+    <img src="https://img.shields.io/badge/lumen-8.0-orange" alt="Lumen"/>
+    <img src="https://img.shields.io/badge/nodejs-15.0-green" alt="NodeJS"/>
     <img src="https://img.shields.io/badge/Code-Go-informational?style=flat-square&logo=go&color=00ADD8" alt="Go" />
     <img src="https://img.shields.io/badge/Code-PHP-informational?style=flat-square&logo=php&color=777bb4&logoColor=8892BF" alt="PHP" />
     <img src="https://img.shields.io/badge/Code-Laravel-informational?style=flat-square&logo=laravel&color=FF2D20" alt="Laravel" />
@@ -17,11 +19,17 @@
 
 ## 💬 About
 
-This project was developed following [COURSE_NAME](https://couse_link.com) course.
+This project was developed following [[COURSE_NAME]](https://couse_link.com) course.
 
 ## :computer: Technologies
 
 -   [Docker](https://www.docker.com/)
+-   [Docker Compose](https://docs.docker.com/compose/)
+-   [Dockerize](https://github.com/jwilder/dockerize)
+-   [Node.js](https://nodejs.org/en/)
+-   [Nginx](https://www.nginx.com/)
+-   [MySQL](https://www.mysql.com/)
+-   [Node MySQL2](https://www.npmjs.com/package/mysql2)
 
 ## :scroll: Requirements
 
