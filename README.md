@@ -1,4 +1,4 @@
-# <p align="center">COURSE_NAME 💀</p>
+# <p align="center">[COURSE_NAME] 💀</p>
 
 <p align="center">
     <img src="https://img.shields.io/badge/php-8.0-green" alt="PHP"/>
@@ -19,7 +19,7 @@
 
 ## 💬 About
 
-This project was developed following [[COURSE_NAME]](https://couse_link.com) course.
+This project was developed following [[COURSE_NAME]]([COURSE_LINK]) course.
 
 ## :computer: Technologies
 
