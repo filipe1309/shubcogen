@@ -23,9 +23,9 @@ This project aims to be a skeleton for course projects deployed on GitHub.
 
 ### Components that are generated:
 
--   [x] README.md
--   [x] notes.md
--   [x] Deploy script (optional)
+-   [x] `README.md`
+-   [x] `notes.md`
+-   [x] Deploy script (optional) with auto create tag, auto commit to `notes.md` files & deploy on GitHub
 -   [x] Pre-push script (optional)
 -   [x] Docker scripts & images (optional)
 
