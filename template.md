@@ -1,4 +1,4 @@
-# <p align="center">[COURSE_NAME] 💀</p>
+# <p align="center">[PROJECT_NAME] 💀</p>
 
 <p align="center">
     <img src="https://img.shields.io/badge/php-8.0-green" alt="PHP"/>

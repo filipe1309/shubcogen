@@ -6,6 +6,7 @@ echo "#############################################"
 echo "                   START                   "
 echo "#############################################"
 
+PROJECT_NAME = 'Project X'
 COURSE_NAME='My Course'
 COURSE_LINK='http://www.mycourse.com'
 PROJECT_REPO_LINK=$(git config --get remote.origin.url)
