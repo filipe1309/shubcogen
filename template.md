@@ -26,6 +26,7 @@ This project was developed following [[COURSE_NAME]]([COURSE_LINK]) course.
 -   [Docker](https://www.docker.com/)
 -   [Docker Compose](https://docs.docker.com/compose/)
 -   [Dockerize](https://github.com/jwilder/dockerize)
+-   [Go](https://golang.org/)
 -   [Node.js](https://nodejs.org/en/)
 -   [Nginx](https://www.nginx.com/)
 -   [MySQL](https://www.mysql.com/)
