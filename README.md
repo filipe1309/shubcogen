@@ -35,6 +35,12 @@ This project aims to be a skeleton for course projects deployed on GitHub.
 -   [Docker Compose](https://docs.docker.com/compose/)
 -   [Shell Script](https://www.shellscript.sh/)
 
+## Get basic files
+
+```sh
+curl https://raw.githubusercontent.com/filipe1309/skeleton-courses/main/bin/get.sh | sh
+```
+
 ## :scroll: Requirements
 
 -   [Docker](https://www.docker.com/)
