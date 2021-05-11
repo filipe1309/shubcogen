@@ -5,6 +5,7 @@
 <!-- https://gitignore.io -->
 
 https://www.toptal.com/developers/gitignore/api/go
+curl https://www.toptal.com/developers/gitignore/api/go -o .gitignore
 
 https://askubuntu.com/questions/20414/find-and-replace-text-within-a-file-using-commands
 
