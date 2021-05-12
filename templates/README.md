@@ -1,6 +1,7 @@
 # <p align="center">[PROJECT_NAME] 💀</p>
 
 <p align="center">
+    <img src="https://img.shields.io/badge/Tools-Docker-informational?style=flat-square&logo=docker&color=2496ED" alt="Docker" />
     <img src="https://img.shields.io/badge/php-8.0-green" alt="PHP"/>
     <img src="https://img.shields.io/badge/lumen-8.0-orange" alt="Lumen"/>
     <img src="https://img.shields.io/badge/nodejs-15.0-green" alt="NodeJS"/>
@@ -10,7 +11,6 @@
     <img src="https://img.shields.io/badge/Code-Lumen-informational?style=flat-square&logo=lumen&color=F4645F" alt="Lumen" />
     <img src="https://img.shields.io/badge/Code-JavaScript-informational?style=flat-square&logo=javascript&color=F7DF1E" alt="JavaScript" />
     <img src="https://img.shields.io/badge/Code-NodeJS-informational?style=flat-square&logo=node.js&color=339933" alt="NodeJS" />
-    <img src="https://img.shields.io/badge/Tools-Docker-informational?style=flat-square&logo=docker&color=2496ED" alt="Docker" />
     <img src="https://img.shields.io/badge/Tools-MySQL-informational?style=flat-square&logo=mysql&color=4479A1&logoColor=2496ED" alt="MySQL" />
     <img src="https://img.shields.io/badge/Tools-SQLServer-informational?style=flat-square&logo=microsoft-sql-server&color=CC2927&logoColor=CC2927" alt="SQLServer" />
     <img src="https://img.shields.io/badge/OS-Linux-informational?style=flat-square&logo=linux&color=FCC624" alt="Linux" />
@@ -35,6 +35,7 @@ This project was developed following [[COURSE_NAME]]([COURSE_LINK]) course.
 ## :scroll: Requirements
 
 -   [Docker](https://www.docker.com/)
+-   [Docker Compose](https://docs.docker.com/compose/)
 
 ## :cd: Installation
 
@@ -49,15 +50,17 @@ cd [PROJECT_REPO_NAME]
 ## :runner: Running
 
 ```sh
-./bin/runenv.sh
+docker-compose up
 ```
+
+> Access http://localhost:8000
 
 ## :white_check_mark: Tests
 
 After up the container:
 
 ```sh
-docker exec -t [CONTAINER_NAME] ./vendor/bin/phpunit
+docker-compose exec -t [CONTAINER_SERVICE_NAME] ./vendor/bin/phpunit
 ```
 
 ## Contributing
