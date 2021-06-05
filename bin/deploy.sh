@@ -10,6 +10,7 @@ echo "---------------------------------------------"
 
 TAG_MSG=$2
 GIT_BRANCH=$(git branch --show-current)
+GIT_DEFAULT_BRANCH=$(git remote show origin | grep 'HEAD' | cut -d':' -f2 | sed -e 's/^ *//g' -e 's/ *$//g')
 TAG_NAME=$(echo "$GIT_BRANCH" | tr -d -)
 
 IFS='-' read -ra ADDR <<< "$GIT_BRANCH"
@@ -18,7 +19,7 @@ CLASS_NUMBER=${ADDR[1]}
 
 echo $CLASS_TYPE $CLASS_NUMBER
 GIT_BRANCH_NEXT_CLASS=$CLASS_TYPE-$(($CLASS_NUMBER + 1))
-GIT_BRANCH_NEXT_CLASS=${GIT_BRANCH_NEXT_CLASS^^}
+GIT_BRANCH_NEXT_CLASS=${GIT_BRANCH_NEXT_CLASS^^}  # toupper
 printf "\n## ${GIT_BRANCH_NEXT_CLASS^^}\n" >> notes.md
 
 exit 0
@@ -84,7 +85,7 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     git add notes.md && git commit -m "docs: update notes"
     git push origin $GIT_BRANCH && git push origin $GIT_BRANCH --tags && 
     echo "Deploy completed!"
-    confirm "Chekout main & Pull from repo? [Y/n]" && git checkout main && git pull
+    confirm "Chekout to $GIT_DEFAULT_BRANCH & Pull from repo? [Y/n]" && git checkout $GIT_DEFAULT_BRANCH && git pull
     confirm "Go to next class? ($GIT_BRANCH_NEXT_CLASS) [Y/n]" && git checkout -b $GIT_BRANCH_NEXT_CLASS
     echo "## ${GIT_BRANCH_NEXT_CLASS^^}" >> notes.md
 else
