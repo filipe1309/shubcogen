@@ -18,6 +18,10 @@ CLASS_NUMBER=${ADDR[1]}
 
 echo $CLASS_TYPE $CLASS_NUMBER
 GIT_BRANCH_NEXT_CLASS=$CLASS_TYPE-$(($CLASS_NUMBER + 1))
+GIT_BRANCH_NEXT_CLASS=${GIT_BRANCH_NEXT_CLASS^^}
+printf "\n## ${GIT_BRANCH_NEXT_CLASS^^}\n" >> notes.md
+
+exit 0
 echo "---------------------------------------------"
 
 confirm() {
@@ -28,17 +32,6 @@ confirm() {
     else
         exit 0;
     fi
-
-    # call with a prompt string or use a default
-    # read -r -p "${1:-Are you sure? [Y/n]} " response
-    # case "$response" in
-    #     [yY][eE][sS]|[yY][\n][]) 
-    #         true
-    #         ;;
-    #     *)
-    #         false
-    #         ;;
-    # esac
 }
 
 echo "Deploying branch: $GIT_BRANCH ..."
@@ -93,6 +86,7 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     echo "Deploy completed!"
     confirm "Chekout main & Pull from repo? [Y/n]" && git checkout main && git pull
     confirm "Go to next class? ($GIT_BRANCH_NEXT_CLASS) [Y/n]" && git checkout -b $GIT_BRANCH_NEXT_CLASS
+    echo "## ${GIT_BRANCH_NEXT_CLASS^^}" >> notes.md
 else
     echo "Bye =)"
     exit 0
