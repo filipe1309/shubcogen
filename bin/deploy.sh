@@ -14,16 +14,13 @@ TAG_NAME=$(echo "$GIT_BRANCH" | tr -d -)
 
 
 confirm() {
-    # call with a prompt string or use a default
-    read -r -p "${1:-Are you sure? [y/N]} " response
-    case "$response" in
-        [yY][eE][sS]|[yY]) 
-            true
-            ;;
-        *)
-            false
-            ;;
-    esac
+    read -r -p "Are you sure? [Y/n] " response
+    response=${response,,} # tolower
+    if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
+        echo "Ok"
+    else
+        exit 0;
+    fi
 }
 
 echo "Deploying branch: $GIT_BRANCH ..."
@@ -54,9 +51,9 @@ echo "Branch to deploy will be: \"$GIT_BRANCH\""
 echo "Tag will be: [name]= \"$TAG_NAME\", [msg]= \"$TAG_MSG\""
 echo "---------------------------------------------"
 
-read -r -p "Are you sure? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
-then
+read -r -p "Are you sure? [Y/n] " response
+response=${response,,} # tolower
+if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     echo "---------------------------------------------"
     echo "Deploying..."
     git add notes.md && git commit -m "docs: update notes"
