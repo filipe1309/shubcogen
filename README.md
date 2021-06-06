@@ -55,7 +55,7 @@ git clone git@github.com:filipe1309/skeleton-courses.git
 cd skeleton-courses
 ```
 
-## :runner: Generating the skeleton to your project
+## :runner: Generating the skeleton to your project [WIP]
 
 ```sh
 ./bin/generate.sh
@@ -67,7 +67,7 @@ Then copy the file on `gen` folder into yout project root folder.
 
 - [ ] Improve gitignore files (get from `https://github.com/github/gitignore`)
 - [ ] Add badges generation
-- [ ] Add project setup (with 2 types: `Class` or `Episode`, or another type set by user)
+- [ ] Improve project setup `bin/generate.sh` (with 2 types: `Class` or `Episode`, or another type set by user)
 - [ ] Add an visual interface to create the `README.md` & setup project configs
 - [ ] Simplify deploy script
 
