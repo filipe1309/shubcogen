@@ -65,11 +65,11 @@ Then copy the file on `gen` folder into yout project root folder.
 
 ## :pushpin: Roadmap
 
-- [] Improve gitignore files (get from `https://github.com/github/gitignore`)
-- [] Add badges generation
-- [] Add project setup (with 2 types: `Class` or `Episode`, or another type set by user)
-- [] Add an visual interface to create the `README.md` & setup project configs
-- [] Simplify deploy script
+- [ ] Improve gitignore files (get from `https://github.com/github/gitignore`)
+- [ ] Add badges generation
+- [ ] Add project setup (with 2 types: `Class` or `Episode`, or another type set by user)
+- [ ] Add an visual interface to create the `README.md` & setup project configs
+- [ ] Simplify deploy script
 
 ## Contributing
 
