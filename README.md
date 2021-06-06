@@ -23,17 +23,17 @@ This project aims to be a skeleton for course projects deployed on GitHub.
 
 ### Components that are generated:
 
--   [x] `README.md`
--   [x] `notes.md`
--   [x] Deploy script (optional) with auto create tag, auto commit to `notes.md` files & deploy on GitHub
--   [x] Pre-push script (optional)
--   [x] Docker scripts & images (optional)
+- [x] `README.md`
+- [x] `notes.md`
+- [x] Deploy script (optional) with auto create tag, auto commit to `notes.md` files & deploy on GitHub
+- [x] Pre-push script (optional)
+- [x] Docker scripts & images (optional)
 
 ## :computer: Technologies
 
--   [Docker](https://www.docker.com/)
--   [Docker Compose](https://docs.docker.com/compose/)
--   [Shell Script](https://www.shellscript.sh/)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Shell Script](https://www.shellscript.sh/)
 
 ## Get basic files
 
@@ -43,7 +43,7 @@ curl https://raw.githubusercontent.com/filipe1309/skeleton-courses/main/bin/get.
 
 ## :scroll: Requirements
 
--   [Docker](https://www.docker.com/)
+- [Docker](https://www.docker.com/)
 
 ## :cd: Installation
 
@@ -62,6 +62,14 @@ cd skeleton-courses
 ```
 
 Then copy the file on `gen` folder into yout project root folder.
+
+## :pushpin: Roadmap
+
+- [] Improve gitignore files (get from `https://github.com/github/gitignore`)
+- [] Add badges generation
+- [] Add project setup (with 2 types: `Class` or `Episode`, or another type set by user)
+- [] Add an visual interface to create the `README.md` & setup project configs
+- [] Simplify deploy script
 
 ## Contributing
 
