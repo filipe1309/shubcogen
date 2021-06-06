@@ -21,12 +21,10 @@ echo $CLASS_TYPE $CLASS_NUMBER
 GIT_BRANCH_NEXT_CLASS=$CLASS_TYPE-$(($CLASS_NUMBER + 1))
 GIT_BRANCH_NEXT_CLASS=${GIT_BRANCH_NEXT_CLASS^^}  # toupper
 printf "\n## ${GIT_BRANCH_NEXT_CLASS^^}\n" >> notes.md
-
-exit 0
 echo "---------------------------------------------"
 
 confirm() {
-    read -r -p "Are you sure? [Y/n] " response
+    read -r -p "${1:-Are you sure? [Y/n]} " response
     response=${response,,} # tolower
     if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         echo "Ok"
