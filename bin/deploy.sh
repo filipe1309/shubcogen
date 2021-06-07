@@ -85,7 +85,7 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     git add notes.md && git commit -m "docs: update notes"
     git push origin $GIT_BRANCH && git push origin $GIT_BRANCH --tags && 
     echo "Deploy completed!"
-    confirm "Chekout to $GIT_DEFAULT_BRANCH & Pull from repo? [Y/n]" && git checkout $GIT_DEFAULT_BRANCH && git pull
+    confirm "Checkout to $GIT_DEFAULT_BRANCH & Pull from repo? [Y/n]" && git checkout $GIT_DEFAULT_BRANCH && git pull
     confirm "Go to next class/episode? ($GIT_BRANCH_NEXT_CLASS_LW) [Y/n]" && git checkout -b $GIT_BRANCH_NEXT_CLASS_LW
     echo "## ${GIT_BRANCH_NEXT_CLASS^^}" >> notes.md
 else
