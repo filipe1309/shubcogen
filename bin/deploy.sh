@@ -83,11 +83,12 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     echo "---------------------------------------------"
     echo "Deploying..."
     git add notes.md && git commit -m "docs: update notes"
-    git push origin $GIT_BRANCH && git push origin $GIT_BRANCH --tags && 
+    confirm "Checkout to \"$GIT_DEFAULT_BRANCH\" branch & Merge current branch ($GIT_BRANCH)? [Y/n]" && git checkout $GIT_DEFAULT_BRANCH && git pull && git merge $GIT_BRANCH
+    confirm "Deploy on \"$GIT_DEFAULT_BRANCH\" branch? [Y/n]" git push origin $GIT_DEFAULT_BRANCH && git push origin $GIT_DEFAULT_BRANCH --tags
     echo "Deploy completed!"
-    confirm "Checkout to $GIT_DEFAULT_BRANCH & Pull from repo? [Y/n]" && git checkout $GIT_DEFAULT_BRANCH && git pull
     confirm "Go to next class/episode? ($GIT_BRANCH_NEXT_CLASS_LW) [Y/n]" && git checkout -b $GIT_BRANCH_NEXT_CLASS_LW
     echo "## ${GIT_BRANCH_NEXT_CLASS^^}" >> notes.md
+    echo "" >> notes.md
 else
     echo "Bye =)"
     exit 0
