@@ -86,3 +86,7 @@ Please make sure to update tests as appropriate.
 <p align="center">
     Done with ♥ by <a style="font-weight: bold" href="https://www.linkedin.com/in/filipe1309/">Filipe Leuch Bonfim</a> 🖖
 </p>
+
+---
+
+> @ Generated with [skeleton-courses](https://github.com/filipe1309/skeleton-courses)
