@@ -72,7 +72,7 @@ Then copy the file on `gen` folder into yout project root folder.
 - [ ] Improve project setup `bin/generate.sh` (with 2 types: `Class` or `Episode`, or another type set by user)
 - [ ] Add an visual interface to create the `README.md` & setup project configs
 - [ ] Simplify deploy script
-- [ ] Add an option to append an extra script to `deploy.sh` (like a changelo.sh)
+- [ ] Add an option to append an extra script to `deploy.sh` (like a `changelog.sh`)
 
 ## Contributing
 
