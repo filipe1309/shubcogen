@@ -40,7 +40,7 @@ This project aims to be a skeleton generator for course projects deployed on Git
 ## Get basic files
 
 ```sh
-curl https://raw.githubusercontent.com/filipe1309/skeleton-courses/main/bin/get.sh | sh
+curl https://raw.githubusercontent.com/filipe1309/shubcogen/main/bin/get.sh | sh
 ```
 
 ## :scroll: Requirements
@@ -50,11 +50,11 @@ curl https://raw.githubusercontent.com/filipe1309/skeleton-courses/main/bin/get.
 ## :cd: Installation
 
 ```sh
-git clone git@github.com:filipe1309/skeleton-courses.git
+git clone git@github.com:filipe1309/shubcogen.git
 ```
 
 ```sh
-cd skeleton-courses
+cd shubcogen
 ```
 
 ## :runner: Generating the skeleton to your project [WIP]
