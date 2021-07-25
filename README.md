@@ -65,6 +65,9 @@ Then copy the file on `gen` folder into yout project root folder.
 
 ## :pushpin: Roadmap
 
+- [ ] Auto-update (optional) `deploy.sh`
+- [ ] Add sementic versioning
+- [ ] Add as a npm package & php package
 - [ ] Backup os existing files
 - [ ] Improve gitignore files (get from `https://github.com/github/gitignore`)
 - [ ] Add badges generation
