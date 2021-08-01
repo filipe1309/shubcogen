@@ -89,4 +89,4 @@ Please make sure to update tests as appropriate.
 
 ---
 
-> @ Generated with [skeleton-courses](https://github.com/filipe1309/skeleton-courses)
+> @ Generated with [ShubcoGen™](https://github.com/filipe1309/shubcogen)
