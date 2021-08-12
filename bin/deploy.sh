@@ -17,7 +17,7 @@ DARK_GRAY='\033[1;30m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-VERSION=0.2.0
+VERSION=0.2.1
 
 echo -e "${BG_GREEN}"
 echo "#############################################"
@@ -33,11 +33,16 @@ TAG_NAME=$GIT_BRANCH
 FAILED_MSG="ERROR"
 
 IFS='-' read -ra ADDR <<< "$GIT_BRANCH"
-CLASS_TYPE=${ADDR[0]}
+CLASS_TYPE="${ADDR[0]}-"
+
+if [[ ${ADDR[1]} == *"."* ]]; then
+    IFS='.' read -ra ADDR <<< "${ADDR[1]}"
+    CLASS_NUMBER="$CLASS_NUMBER ${ADDR[1]}"
+    CLASS_TYPE="${CLASS_TYPE}${ADDR[0]}."
+fi
 CLASS_NUMBER=${ADDR[1]}
 
-echo $CLASS_TYPE $CLASS_NUMBER
-GIT_BRANCH_NEXT_CLASS=$CLASS_TYPE-$(($CLASS_NUMBER + 1))
+GIT_BRANCH_NEXT_CLASS=$CLASS_TYPE$(($CLASS_NUMBER + 1))
 GIT_BRANCH_NEXT_CLASS_LW=${GIT_BRANCH_NEXT_CLASS,,}  # tolower
 GIT_BRANCH_NEXT_CLASS_UP=${GIT_BRANCH_NEXT_CLASS^^}  # toupper
 
