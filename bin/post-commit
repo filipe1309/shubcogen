@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# DOTR
+
 # Update Tag Version (with semantic versioning) by commit
 
 NEWEST_TAG=$(git describe --abbrev=0 --tags)
