@@ -34,6 +34,7 @@ GIT_BRANCH=$(git branch --show-current)
 GIT_DEFAULT_BRANCH=$(git remote show origin | grep 'HEAD' | cut -d':' -f2 | sed -e 's/^ *//g' -e 's/ *$//g')
 TAG_NAME=$GIT_BRANCH
 FAILED_MSG="ERROR (Delete last tag if it was created)"
+NEWEST_TAG=$(git describe --abbrev=0 --tags)
 
 IFS='-' read -ra ADDR <<< "$GIT_BRANCH"
 CLASS_TYPE="${ADDR[0]}-"
@@ -64,53 +65,55 @@ echo "Next branch: $GIT_BRANCH_NEXT_CLASS_LW"
 
 echo "---------------------------------------------"
 
-# if arguments [ $# -eq 0 ]
-if [ $# -eq 0 ]; then
-    read -r -p "Do you want to tag? [Y/n] " response
-    response=${response,,} # tolower
-    if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
-        echo "# TAG MESSAGE"
-        echo "# Example: \"$(git tag -n9 | head -n 1 | awk '{for(i=2;i<=NF;++i)printf $i FS}')\""
-        tagMsgPrefixSuggestion="$(tr '[:lower:]' '[:upper:]' <<< ${TAG_NAME:0:1})${TAG_NAME:1}"
-        echo "Type the tag message prefix [$tagMsgPrefixSuggestion - ]:"
-        read -e tagMsgPrefix
-        if [ -z "$tagMsgPrefix"  -a "$tagMsgPrefix" != " " ]; then
-            tagMsgPrefix=$tagMsgPrefixSuggestion
-        fi
-
-        echo "Type the tag message:"
-        read -e tagmsg
-        if [ ! -z "$tagmsg"  -a "$tagmsg" != " " ]; then
-            TAG_MSG_SLUG=$(echo "$tagmsg" | iconv -t ascii//TRANSLIT | sed -r 's/[~\^]+//g' | sed -r 's/[^a-zA-Z0-9]+/-/g' | sed -r 's/^-+\|-+$//g' | tr A-Z a-z)
-            TAG_NAME="${TAG_NAME}-${TAG_MSG_SLUG}"
-            TAG_MSG="$tagMsgPrefix - $tagmsg"
-        else
-            echo "Tag message missing"
-            exit 0
-        fi
-
-        echo "---------------------------------------------"
-        echo "Tag:    [name]= \"$TAG_NAME\" || [msg]= \"$TAG_MSG\""
-        echo "---------------------------------------------"
-
-        read -r -p "Are you sure? [Y/n] " response
+if [[ $NEWEST_TAG != *$GIT_BRANCH* ]]; then
+    # if arguments [ $# -eq 0 ]
+    if [ $# -eq 0 ]; then
+        read -r -p "Do you want to tag? [Y/n] " response
         response=${response,,} # tolower
-
         if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
-            git tag -a $TAG_NAME -m "$TAG_MSG"
-        else
-            echo "Bye =)"
+            echo "# TAG MESSAGE"
+            echo "# Example: \"$(git tag -n9 | head -n 1 | awk '{for(i=2;i<=NF;++i)printf $i FS}')\""
+            tagMsgPrefixSuggestion="$(tr '[:lower:]' '[:upper:]' <<< ${TAG_NAME:0:1})${TAG_NAME:1}"
+            echo "Type the tag message prefix [$tagMsgPrefixSuggestion - ]:"
+            read -e tagMsgPrefix
+            if [ -z "$tagMsgPrefix"  -a "$tagMsgPrefix" != " " ]; then
+                tagMsgPrefix=$tagMsgPrefixSuggestion
+            fi
+
+            echo "Type the tag message:"
+            read -e tagmsg
+            if [ ! -z "$tagmsg"  -a "$tagmsg" != " " ]; then
+                TAG_MSG_SLUG=$(echo "$tagmsg" | iconv -t ascii//TRANSLIT | sed -r 's/[~\^]+//g' | sed -r 's/[^a-zA-Z0-9]+/-/g' | sed -r 's/^-+\|-+$//g' | tr A-Z a-z)
+                TAG_NAME="${TAG_NAME}-${TAG_MSG_SLUG}"
+                TAG_MSG="$tagMsgPrefix - $tagmsg"
+            else
+                echo "Tag message missing"
+                exit 0
+            fi
+
+            echo "---------------------------------------------"
+            echo "Tag:    [name]= \"$TAG_NAME\" || [msg]= \"$TAG_MSG\""
+            echo "---------------------------------------------"
+
+            read -r -p "Are you sure? [Y/n] " response
+            response=${response,,} # tolower
+
+            if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
+                git tag -a $TAG_NAME -m "$TAG_MSG"
+            else
+                echo "Bye =)"
+                exit 0
+            fi
+            echo "---------------------------------------------"
+        fi
+    else
+        # Verify if param --tag-msg is set && message param is not empty
+        if [ $1 != "--tag-msg" ] && [ -z "$2" ]; then
+            echo "Wrong tag param"
             exit 0
         fi
-        echo "---------------------------------------------"
+        git tag -a $TAG_NAME -m "$TAG_MSG"
     fi
-else
-    # Verify if param --tag-msg is set && message param is not empty
-    if [ $1 != "--tag-msg" ] && [ -z "$2" ]; then
-        echo "Wrong tag param"
-        exit 0
-    fi
-    git tag -a $TAG_NAME -m "$TAG_MSG"
 fi
 
 echo ""
