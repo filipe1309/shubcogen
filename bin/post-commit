@@ -10,6 +10,6 @@ echo $NEWEST_TAG
 echo $SCRIPT_VERSION
 echo "version $SCRIPT_VERSION"
 
-# if [ x$NEWEST_TAG != x$SCRIPT_VERSION ]; then
-#     git tag -a $SCRIPT_VERSION -m "Version $SCRIPT_VERSION"
-# fi
+if [ x$NEWEST_TAG != x$SCRIPT_VERSION ]; then
+    git tag -a $SCRIPT_VERSION -m "Version $SCRIPT_VERSION"
+fi
