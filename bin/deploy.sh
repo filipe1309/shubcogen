@@ -17,9 +17,11 @@ DARK_GRAY='\033[1;30m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
+VERSION=0.2.0
+
 echo -e "${BG_GREEN}"
 echo "#############################################"
-echo "                   DEPLOY                   "
+echo "                   DOTR DEPLOY $VERSION                   "
 echo -e "#############################################${NO_BG}"
 echo "# [Optional] param: --tag-msg \"TAG_MESSAGE_HERE\""
 echo "---------------------------------------------"
