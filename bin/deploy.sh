@@ -17,7 +17,7 @@ DARK_GRAY='\033[1;30m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-VERSION=0.2.1
+VERSION=0.3.1
 
 echo -e "${BG_GREEN}"
 echo "#############################################"
@@ -86,7 +86,21 @@ if [ $# -eq 0 ]; then
             echo "Tag message missing"
             exit 0
         fi
-        git tag -a $TAG_NAME -m "$TAG_MSG"
+
+        echo "---------------------------------------------"
+        echo "Tag:    [name]= \"$TAG_NAME\" || [msg]= \"$TAG_MSG\""
+        echo "---------------------------------------------"
+
+        read -r -p "Are you sure? [Y/n] " response
+        response=${response,,} # tolower
+
+        if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
+            git tag -a $TAG_NAME -m "$TAG_MSG"
+        else
+            echo "Bye =)"
+            exit 0
+        fi
+        echo "---------------------------------------------"
     fi
 else
     # Verify if param --tag-msg is set && message param is not empty
