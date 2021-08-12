@@ -68,4 +68,5 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     echo "Updating..."
     sed -i "s/$VERSION/$NEW_VERSION/g" bin/version
     echo -e "\xE2\x9C\x94 Done"
+    git add bin/version && git commit -m "Update version ($type) from $VERSION to $NEW_VERSION"
 fi
