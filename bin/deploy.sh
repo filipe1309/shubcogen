@@ -28,6 +28,7 @@ TAG_MSG=$2
 GIT_BRANCH=$(git branch --show-current)
 GIT_DEFAULT_BRANCH=$(git remote show origin | grep 'HEAD' | cut -d':' -f2 | sed -e 's/^ *//g' -e 's/ *$//g')
 TAG_NAME=$GIT_BRANCH
+FAILED_MSG="ERROR"
 
 IFS='-' read -ra ADDR <<< "$GIT_BRANCH"
 CLASS_TYPE=${ADDR[0]}
@@ -101,8 +102,8 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     echo "---------------------------------------------"
     echo "Deploying..."
     git add notes.md && git commit -m "docs: update notes"
-    confirm "Checkout to \"$GIT_DEFAULT_BRANCH\" branch & Merge current branch ($GIT_BRANCH)? [Y/n]" && git checkout $GIT_DEFAULT_BRANCH && git pull && git merge $GIT_BRANCH
-    confirm "Deploy on \"$GIT_DEFAULT_BRANCH\" branch? [Y/n]" git push origin $GIT_DEFAULT_BRANCH && git push origin $GIT_DEFAULT_BRANCH --tags
+    confirm "Checkout to \"$GIT_DEFAULT_BRANCH\" branch & Merge current branch ($GIT_BRANCH)? [Y/n]" && { git checkout $GIT_DEFAULT_BRANCH  || { echo -e "\u274c $FAILED_MSG" ; exit 1; } } && { git pull  || { echo -e "\u274c $FAILED_MSG" ; exit 1; } } && { git merge $GIT_BRANCH  || { echo -e "\u274c $FAILED_MSG" ; exit 1; } }
+    confirm "Deploy on \"$GIT_DEFAULT_BRANCH\" branch? [Y/n]" && { git push origin $GIT_DEFAULT_BRANCH  || { echo -e "\u274c $FAILED_MSG" ; exit 1; } } && { git push origin $GIT_DEFAULT_BRANCH --tags  || { echo -e "\u274c $FAILED_MSG" ; exit 1; } }
     echo -e "                   \xE2\x9C\x94 DEPLOY COMPLETED"
     confirm "Go to next class/episode? ($GIT_BRANCH_NEXT_CLASS_LW) [Y/n]" && git checkout -b $GIT_BRANCH_NEXT_CLASS_LW
     echo "## ${GIT_BRANCH_NEXT_CLASS^^}" >> notes.md
