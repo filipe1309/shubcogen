@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# DOTR
+
+# Aut incremeent Tag Version (with semantic versioning) on pr-commit
+
+VERSION=$(head -n 1 bin/version)
+
+major=`echo $VERSION | cut -d. -f1`
+minor=`echo $VERSION | cut -d. -f2`
+revision=`echo $VERSION | cut -d. -f3`
+
+echo "---------------------------------------------"
+echo "Current version: $VERSION"
+echo "---------------------------------------------"
+echo ""
+
+echo 'Which type of update:'
+
+exec < /dev/tty # to work with git hooks
+select type in major minor revision
+do
+        case $type in 
+        major|minor|revision)   
+                break
+                ;;
+        *)
+                echo "Invalid area" 
+                ;;
+        esac
+done
+
+if [ $type == "major" ]; then
+    major=`expr $major + 1`
+    minor=0
+    revision=0
+elif [ $type == "minor" ]; then
+    minor=`expr $minor + 1`
+    revision=0
+elif  [ $type == "revision" ]; then
+    revision=`expr $revision + 1`
+else
+    echo "No version"
+    exit 1
+fi
+
+echo "---------------------------------------------"
+
+echo "$type"
+NEW_VERSION="$major.$minor.$revision"
+echo $NEW_VERSION
+
+echo "---------------------------------------------"
+
+confirm() {
+    read -r -p "${1:-Are you sure? [Y/n]} " response
+    response=${response,,} # tolower
+    if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
+        echo "Ok"
+    else
+        exit 0;
+    fi
+}
+
+read -r -p "Update version ($type) from $VERSION to $NEW_VERSION? [Y/n]" response
+response=${response,,} # tolower
+if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
+    echo "Updating..."
+    sed -i "s/$VERSION/$NEW_VERSION/g" bin/version
+    
+    echo "Commiting..."
+    git add bin/version && git commit -m "Update version ($type) from $VERSION to $NEW_VERSION" --no-verify
+    
+    echo -e "\xE2\x9C\x94 Done"
+fi
