@@ -27,7 +27,7 @@ echo "---------------------------------------------"
 TAG_MSG=$2
 GIT_BRANCH=$(git branch --show-current)
 GIT_DEFAULT_BRANCH=$(git remote show origin | grep 'HEAD' | cut -d':' -f2 | sed -e 's/^ *//g' -e 's/ *$//g')
-TAG_NAME=$(echo "$GIT_BRANCH" | tr -d -)
+TAG_NAME=$GIT_BRANCH
 
 IFS='-' read -ra ADDR <<< "$GIT_BRANCH"
 CLASS_TYPE=${ADDR[0]}
@@ -71,6 +71,8 @@ if [ $# -eq 0 ]; then
         echo "Type the tag message:"
         read -e tagmsg
         if [ ! -z "$tagmsg"  -a "$tagmsg" != " " ]; then
+            TAG_MSG_SLUG=$(echo "$tagmsg" | iconv -t ascii//TRANSLIT | sed -r 's/[~\^]+//g' | sed -r 's/[^a-zA-Z0-9]+/-/g' | sed -r 's/^-+\|-+$//g' | tr A-Z a-z)
+            TAG_NAME="${TAG_NAME}-${TAG_MSG_SLUG}"
             TAG_MSG="$tagMsgPrefix - $tagmsg"
         else
             echo "Tag message missing"
