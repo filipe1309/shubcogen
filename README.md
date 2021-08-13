@@ -18,12 +18,12 @@ This project aims to be a skeleton generator for course projects deployed on Git
 - [x] `notes.md`
 - [x] Deploy script (optional) with auto create tag, auto commit to `notes.md` files & deploy on GitHub
 - [x] Pre-push script (optional)
+- [x] Self-Update script
 - [x] Docker scripts & images (optional)
 
 ## :computer: Technologies
 
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/)
+- [Curl](https://curl.se/)
 - [Shell Script](https://www.shellscript.sh/)
 
 ## Get basic files
@@ -34,7 +34,7 @@ curl https://raw.githubusercontent.com/filipe1309/shubcogen/main/bin/get.sh | sh
 
 ## :scroll: Requirements
 
-- [Docker](https://www.docker.com/)
+- [Curl](https://curl.se/)
 
 ## :cd: Installation
 
