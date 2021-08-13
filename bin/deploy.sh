@@ -24,10 +24,12 @@ VERSION=$(head -n 1 bin/version)
 
 echo -e "${BG_GREEN}"
 echo "#############################################"
-echo "                   DOTR DEPLOY $VERSION                   "
+echo "               DOTR DEPLOY $VERSION                   "
 echo -e "#############################################${NO_BG}"
 echo "# [Optional] param: --tag-msg \"TAG_MESSAGE_HERE\""
 echo "---------------------------------------------"
+
+bin/self-update.sh
 
 TAG_MSG=$2
 GIT_BRANCH=$(git branch --show-current)
