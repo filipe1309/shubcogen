@@ -13,6 +13,8 @@ if [ "$REMOTE_VERSION" != "$LOCAL_VERSION" ]; then
             curl -o .shub/bin/version https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/version
             curl -o .shub/bin/deploy.sh https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/deploy.sh
             chmod +x .shub/bin/deploy.sh
-            exit 0;
+            exit 0
         fi
 fi
+
+exit 1

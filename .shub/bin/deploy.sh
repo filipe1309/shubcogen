@@ -29,7 +29,7 @@ echo -e "#############################################${NO_BG}"
 echo "# [Optional] param: --tag-msg \"TAG_MESSAGE_HERE\""
 echo "---------------------------------------------"
 
-.shub/bin/self-update.sh
+.shub/bin/self-update.sh && exit 0
 
 TAG_MSG=$2
 GIT_BRANCH=$(git branch --show-current)
