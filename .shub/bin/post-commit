@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# DOTR
+
+# Update Tag Version (with semantic versioning) on post-commit
+
+NEWEST_TAG=$(git describe --abbrev=0 --tags)
+
+SCRIPT_VERSION=$(head -n 1 .shub/bin/version)
+
+
+echo $NEWEST_TAG
+echo $SCRIPT_VERSION
+echo "version $SCRIPT_VERSION"
+
+if [ x$NEWEST_TAG != x$SCRIPT_VERSION ]; then
+    echo "NEW VERSION TAG ADDED: $SCRIPT_VERSION"
+    git tag -a $SCRIPT_VERSION -m "Version $SCRIPT_VERSION"
+fi
