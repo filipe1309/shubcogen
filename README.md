@@ -54,6 +54,12 @@ cd shubcogen
 
 Then copy the file on `gen` folder into yout project root folder.
 
+## 🕹 Deploying into GitHub
+
+```sh
+./shub-deploy.sh
+```
+
 ## :pushpin: Roadmap
 
 - [x] Add sementic versioning
