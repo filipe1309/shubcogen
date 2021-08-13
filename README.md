@@ -29,7 +29,7 @@ This project aims to be a skeleton generator for course projects deployed on Git
 ## Get basic files
 
 ```sh
-curl https://raw.githubusercontent.com/filipe1309/shubcogen/main/bin/get.sh | sh
+curl https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/get.sh | sh
 ```
 
 ## :scroll: Requirements
@@ -49,15 +49,15 @@ cd shubcogen
 ## :runner: Generating the skeleton to your project [WIP]
 
 ```sh
-./bin/generate.sh
+.shub/bin/generate.sh
 ```
 
 Then copy the file on `gen` folder into yout project root folder.
 
 ## :pushpin: Roadmap
 
-- [ ] Auto-update (optional) `deploy.sh`
-- [ ] Add sementic versioning
+- [x] Auto-update `deploy.sh`
+- [x] Add sementic versioning
 - [ ] Add as a npm package & php package
 - [ ] Backup os existing files
 - [ ] Improve gitignore files (get from `https://github.com/github/gitignore`)

@@ -89,4 +89,4 @@ Please make sure to update tests as appropriate.
 
 ---
 
-> @ Generated with [ShubcoGen™](https://github.com/filipe1309/shubcogen)
+> @ Generated with [ShubcoGen™](https://github.com/filipe1309/shubcogen) [VERSION]

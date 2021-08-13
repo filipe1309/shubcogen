@@ -19,7 +19,7 @@ DARK_GRAY='\033[1;30m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-VERSION=$(head -n 1 bin/version)
+VERSION=$(head -n 1 .shub/bin/version)
 
 
 echo -e "${BG_GREEN}"
@@ -29,7 +29,7 @@ echo -e "#############################################${NO_BG}"
 echo "# [Optional] param: --tag-msg \"TAG_MESSAGE_HERE\""
 echo "---------------------------------------------"
 
-bin/self-update.sh
+.shub/bin/self-update.sh
 
 TAG_MSG=$2
 GIT_BRANCH=$(git branch --show-current)
