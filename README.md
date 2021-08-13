@@ -49,7 +49,7 @@ cd shubcogen
 ## :runner: Generating the skeleton to your project [WIP]
 
 ```sh
-./bin/generate.sh
+.shub/bin/generate.sh
 ```
 
 Then copy the file on `gen` folder into yout project root folder.

@@ -6,7 +6,7 @@
 
 NEWEST_TAG=$(git describe --abbrev=0 --tags)
 
-SCRIPT_VERSION=$(head -n 1 bin/version)
+SCRIPT_VERSION=$(head -n 1 .shub/bin/version)
 
 
 echo $NEWEST_TAG

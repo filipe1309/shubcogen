@@ -4,7 +4,7 @@
 
 # Aut incremeent Tag Version (with semantic versioning) on pr-commit
 
-VERSION=$(head -n 1 bin/version)
+VERSION=$(head -n 1 .shub/bin/version)
 
 major=`echo $VERSION | cut -d. -f1`
 minor=`echo $VERSION | cut -d. -f2`
@@ -66,10 +66,10 @@ read -r -p "Update version ($type) from $VERSION to $NEW_VERSION? [Y/n]" respons
 response=${response,,} # tolower
 if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     echo "Updating..."
-    sed -i "s/$VERSION/$NEW_VERSION/g" bin/version
+    sed -i "s/$VERSION/$NEW_VERSION/g" .shub/bin/version
     
     echo "Commiting..."
-    git add bin/version && git commit -m "Update version ($type) from $VERSION to $NEW_VERSION" --no-verify
+    git add .shub/bin/version && git commit -m "Update version ($type) from $VERSION to $NEW_VERSION" --no-verify
     
     echo -e "\xE2\x9C\x94 Done"
 fi
