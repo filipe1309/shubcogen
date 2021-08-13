@@ -10,5 +10,5 @@ curl -o LICENSE https://raw.githubusercontent.com/filipe1309/shubcogen/main/LICE
 curl -o shub-deploy.sh https://raw.githubusercontent.com/filipe1309/shubcogen/main/shub-deploy.sh
 
 chmod +x .shub/bin/deploy.sh
-chmod +x .shub/bin/shub-deploy.sh
 chmod +x .shub/bin/self-update.sh
+chmod +x shub-deploy.sh
