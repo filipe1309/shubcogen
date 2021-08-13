@@ -56,7 +56,6 @@ Then copy the file on `gen` folder into yout project root folder.
 
 ## :pushpin: Roadmap
 
-- [x] Auto-update `deploy.sh`
 - [x] Add sementic versioning
 - [ ] Add versioning into templates file
 - [ ] Add as a npm package & php package
