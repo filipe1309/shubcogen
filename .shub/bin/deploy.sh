@@ -30,8 +30,6 @@ echo -e "#############################################${NO_BG}"
 echo "# [Optional] param: --tag-msg \"TAG_MESSAGE_HERE\""
 echo "---------------------------------------------"
 
-exit 0
-
 .shub/bin/self-update.sh && exit 0
 
 TAG_MSG=$2
