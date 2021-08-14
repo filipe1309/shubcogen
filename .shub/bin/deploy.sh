@@ -2,7 +2,8 @@
 
 # DevOntheRun Deploy Script
 
-clear
+.shub/bin/shub-logo.sh
+
 
 # Black        0;30     Dark Gray     1;30
 # Red          0;31     Light Red     1;31
@@ -28,6 +29,8 @@ echo "               DOTR DEPLOY $VERSION                   "
 echo -e "#############################################${NO_BG}"
 echo "# [Optional] param: --tag-msg \"TAG_MESSAGE_HERE\""
 echo "---------------------------------------------"
+
+exit 0
 
 .shub/bin/self-update.sh && exit 0
 

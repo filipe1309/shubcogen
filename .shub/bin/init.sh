@@ -2,6 +2,8 @@
 
 # DevOntheRun INIT Project Script
 
+.shub/bin/shub-logo.sh
+
 echo "---------------------------------------------"
 
 read -r -p "Config template? [Y/n] " response
@@ -111,6 +113,7 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     echo "OK =)"
 else
     rm .shub/bin/init.sh
+    rm .shub/bin/shub-logo.sh
     rm .shub/bin/deploy.sh
     rm .shub/bin/self-update.sh
 fi
