@@ -1,4 +1,4 @@
-# <p align="center">[WIP] ShubcoGen™ 💀</p>
+# <p align="center">WIP | ShubcoGen™ 💀</p>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Code-ShellScript-informational?style=flat-square&logo=gnubash&color=4EAA25" alt="Go" />
@@ -44,35 +44,20 @@ In you project directory, run:
 curl https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/get.sh | sh
 ```
 
-### 3. Generating the skeleton to your project [WIP]
+### 3. Generating the skeleton to your project
 
-You'll be prompted to choose the configs of your project.
+After running the script from step 2, you'll be prompted to choose the configs of your project. Don't worry, you can always change the configs later.
 
 ### 🕹 Deploying into GitHub (optional)
 
 You can deploy using the `shub-deploy.sh` script. This script auto-increments the version number of the branch and creates a new tag from branch name.
 
 So you must be in a branch with a number at the end, like `my-branch-1` or `my-branch-1.1`.
+
 For example, if your branch is `my-branch-1.1`, after running this script, you will have a new tag `my-branch-1.1-some-description` and a new branch `my-branch-1.2`, and the old branch will be automatically merged into the `main`.
 
 ```sh
 ./shub-deploy.sh
-```
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-### :cd: Installation
-
-```sh
-git clone git@github.com:filipe1309/shubcogen.git
-```
-
-```sh
-cd shubcogen
 ```
 
 ## :pushpin: Roadmap
@@ -90,11 +75,19 @@ cd shubcogen
 - [ ] Add an option to append an extra script to `deploy.sh` (like a `changelog.sh`)
 - [ ] Save deploy state (if an error occurs)
 
-## Contributing
+## :octocat: Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
+### :cd: Installation
+
+```sh
+git clone git@github.com:filipe1309/shubcogen.git
+```
+
+```sh
+cd shubcogen
+```
 
 ## License
 
