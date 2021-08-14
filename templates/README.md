@@ -1,4 +1,4 @@
-# <p align="center">[PROJECT_NAME] 💀</p>
+# <p align="center">{{ PROJECT_NAME }} 💀</p>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Tools-Docker-informational?style=flat-square&logo=docker&color=2496ED" alt="Docker" />
@@ -18,7 +18,7 @@
 
 ## 💬 About
 
-This project was developed following [[COURSE_NAME]]([COURSE_LINK]) course.
+This project was developed following [{{ COURSE_NAME }}]({{ COURSE_LINK }}) course.
 
 ## :computer: Technologies
 
@@ -40,11 +40,11 @@ This project was developed following [[COURSE_NAME]]([COURSE_LINK]) course.
 ## :cd: Installation
 
 ```sh
-git clone git@github.com:[GITHUB_USER]/[PROJECT_REPO_NAME].git
+git clone git@github.com:{{ GITHUB_USER }}/{{ PROJECT_REPO_NAME }}.git
 ```
 
 ```sh
-cd [PROJECT_REPO_NAME]
+cd {{ PROJECT_REPO_NAME }}
 ```
 
 ## :runner: Running
@@ -55,19 +55,19 @@ docker-compose up
 
 > Access http://localhost:8000
 
-## :white_check_mark: Tests
+<!-- ## :white_check_mark: Tests
 
 After up the container:
 
 ```sh
-docker-compose exec -t [CONTAINER_SERVICE_NAME] ./vendor/bin/phpunit
+docker-compose exec -t {{ CONTAINER_SERVICE_NAME }} ./vendor/bin/phpunit
 ```
 
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
+Please make sure to update tests as appropriate. -->
 
 ## License
 
@@ -89,4 +89,4 @@ Please make sure to update tests as appropriate.
 
 ---
 
-> @ Generated with [ShubcoGen™](https://github.com/filipe1309/shubcogen) [VERSION]
+> @ Generated with [ShubcoGen™](https://github.com/filipe1309/shubcogen) {{ VERSION }}

@@ -2,6 +2,7 @@
 
 curl -o .shub/bin/deploy.sh --create-dirs https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/deploy.sh
 curl -o .shub/bin/self-update.sh --create-dirs https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/self-update.sh
+curl -o .shub/bin/init.sh --create-dirs https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/init.sh
 curl -o .shub/bin/version --create-dirs https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/version
 
 curl -o README.md https://raw.githubusercontent.com/filipe1309/shubcogen/main/templates/README.md
@@ -11,4 +12,7 @@ curl -o shub-deploy.sh https://raw.githubusercontent.com/filipe1309/shubcogen/ma
 
 chmod +x .shub/bin/deploy.sh
 chmod +x .shub/bin/self-update.sh
+chmod +x .shub/bin/init.sh
 chmod +x shub-deploy.sh
+
+.shub/bin/init.sh

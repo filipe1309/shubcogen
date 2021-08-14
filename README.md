@@ -1,4 +1,4 @@
-# <p align="center">[WIP] ShubcoGen 💀</p>
+# <p align="center">[WIP] ShubcoGen™ 💀</p>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Code-ShellScript-informational?style=flat-square&logo=gnubash&color=4EAA25" alt="Go" />
@@ -26,17 +26,46 @@ This project aims to be a skeleton generator for course projects deployed on Git
 - [Curl](https://curl.se/)
 - [Shell Script](https://www.shellscript.sh/)
 
-## Get basic files
+## :scroll: Requirements
+
+- [Git](https://git-scm.com/)
+- [Curl](https://curl.se/)
+- [Bash](https://www.gnu.org/software/bash/)
+
+## :runner: Usage
+
+### 1. Create you project in GitHub
+
+### 2. Get basic files
+
+In you project directory, run:
 
 ```sh
 curl https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/get.sh | sh
 ```
 
-## :scroll: Requirements
+### 3. Generating the skeleton to your project [WIP]
 
-- [Curl](https://curl.se/)
+You'll be prompted to choose the configs of your project.
 
-## :cd: Installation
+### 🕹 Deploying into GitHub (optional)
+
+You can deploy using the `shub-deploy.sh` script. This script auto-increments the version number of the branch and creates a new tag from branch name.
+
+So you must be in a branch with a number at the end, like `my-branch-1` or `my-branch-1.1`.
+For example, if your branch is `my-branch-1.1`, after running this script, you will have a new tag `my-branch-1.1-some-description` and a new branch `my-branch-1.2`, and the old branch will be automatically merged into the `main`.
+
+```sh
+./shub-deploy.sh
+```
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+### :cd: Installation
 
 ```sh
 git clone git@github.com:filipe1309/shubcogen.git
@@ -44,20 +73,6 @@ git clone git@github.com:filipe1309/shubcogen.git
 
 ```sh
 cd shubcogen
-```
-
-## :runner: Generating the skeleton to your project [WIP]
-
-```sh
-.shub/bin/generate.sh
-```
-
-Then copy the file on `gen` folder into yout project root folder.
-
-## 🕹 Deploying into GitHub
-
-```sh
-./shub-deploy.sh
 ```
 
 ## :pushpin: Roadmap
@@ -68,11 +83,12 @@ Then copy the file on `gen` folder into yout project root folder.
 - [ ] Backup os existing files
 - [ ] Improve gitignore files (get from `https://github.com/github/gitignore`)
 - [ ] Add badges generation
-- [ ] Add color deploy script
+- [x] Add color deploy script
 - [ ] Improve project setup `bin/generate.sh` (with 2 types: `Class` or `Episode`, or another type set by user)
 - [ ] Add an visual interface to create the `README.md` & setup project configs
 - [ ] Simplify deploy script
 - [ ] Add an option to append an extra script to `deploy.sh` (like a `changelog.sh`)
+- [ ] Save deploy state (if an error occurs)
 
 ## Contributing
 
