@@ -24,29 +24,38 @@ PROJECT_NAME='Project X'
 COURSE_NAME='My Course'
 COURSE_LINK='http://www.mycourse.com'
 
-PROJECT_REPO_LINK=$(git config --get remote.origin.url)
-PROJECT_REPO_NAME=$(basename `git rev-parse --show-toplevel`)
-GIT_BRANCH=$(git branch --show-current)
+if git rev-parse --git-dir > /dev/null 2>&1; then
+    PROJECT_REPO_LINK=$(git config --get remote.origin.url)
+    PROJECT_REPO_NAME=$(basename `git rev-parse --show-toplevel`)
+    GIT_BRANCH=$(git branch --show-current)
 
-extractUserFromGitHubLInk () {
-    # url="git://github.com/some-user/my-repo.git"
-    # url="https://github.com/some-user/my-repo.git"
-    # url="git@github.com:some-user/my-repo.git"
-    url=$1
-    re="^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$"
+    extractUserFromGitHubLInk () {
+        # url="git://github.com/some-user/my-repo.git"
+        # url="https://github.com/some-user/my-repo.git"
+        # url="git@github.com:some-user/my-repo.git"
+        url=$1
+        re="^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$"
 
-    if [[ $url =~ $re ]]; then    
-        protocol=${BASH_REMATCH[1]}
-        separator=${BASH_REMATCH[2]}
-        hostname=${BASH_REMATCH[3]}
-        user=${BASH_REMATCH[4]}
-        repo=${BASH_REMATCH[5]}
+        if [[ $url =~ $re ]]; then    
+            protocol=${BASH_REMATCH[1]}
+            separator=${BASH_REMATCH[2]}
+            hostname=${BASH_REMATCH[3]}
+            user=${BASH_REMATCH[4]}
+            repo=${BASH_REMATCH[5]}
 
-        GITHUB_USER=$user
-    fi
-}
+            GITHUB_USER=$user
+        fi
+    }
 
-extractUserFromGitHubLInk $PROJECT_REPO_LINK
+    extractUserFromGitHubLInk $PROJECT_REPO_LINK
+else
+  PROJECT_REPO_LINK="{{ REPLACE_WITH_YOUR_REPO_LINK }}"
+  PROJECT_REPO_NAME="{{ REPLACE_WITH_YOUR_REPO_NAME }}"
+  GIT_BRANCH=""
+fi
+
+
+
 
 echo "Type below some infos about the course"
 echo "---------------------------------------------"
