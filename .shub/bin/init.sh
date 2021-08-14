@@ -2,6 +2,8 @@
 
 # DevOntheRun INIT Project Script
 
+exec 0< /dev/tty
+
 .shub/bin/shub-logo.sh
 
 echo "---------------------------------------------"
