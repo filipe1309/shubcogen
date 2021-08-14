@@ -24,10 +24,6 @@ echo "#############################################"
 
 VERSION=$(head -n 1 .shub/bin/version)
 
-PROJECT_NAME='Project X'
-COURSE_NAME='My Course'
-COURSE_LINK='http://www.mycourse.com'
-
 if git rev-parse --git-dir > /dev/null 2>&1; then
     PROJECT_REPO_LINK=$(git config --get remote.origin.url)
     PROJECT_REPO_NAME=$(basename `git rev-parse --show-toplevel`)
@@ -70,6 +66,15 @@ printf 'Course name: '
 read -r COURSE_NAME
 printf 'Course link: '
 read -r COURSE_LINK
+printf 'Course type (class, episode...): '
+read -r COURSE_TYPE
+read -r -p "This course will be unique? [Y/n] " COURSE_MULTIPLE
+COURSE_MULTIPLE=${COURSE_MULTIPLE,,} # tolower
+if [[ $COURSE_MULTIPLE =~ ^(yes|y| ) ]] || [[ -z $COURSE_MULTIPLE ]]; then
+    COURSE_MULTIPLE='false'
+else
+    COURSE_MULTIPLE='true'
+fi
 
 JSON_TEMPLATE='{
     "version": "%s",
@@ -79,10 +84,12 @@ JSON_TEMPLATE='{
     },
     "course": {
         "name": "%s",
-        "link": "%s"
+        "link": "%s",
+        "type": "%s",
+        "multiple": %s
     }
 }\n'
-JSON_CONFIG=$(printf "$JSON_TEMPLATE" "$VERSION" "$PROJECT_NAME" "$PROJECT_REPO_LINK" "$COURSE_NAME" "$COURSE_LINK")
+JSON_CONFIG=$(printf "$JSON_TEMPLATE" "$VERSION" "$PROJECT_NAME" "$PROJECT_REPO_LINK" "$COURSE_NAME" "$COURSE_LINK" "$COURSE_TYPE" "$COURSE_MULTIPLE")
 
 echo ""
 echo "---------------------------------------------"
@@ -113,6 +120,16 @@ read -r -p "Keep shub scripts (deploy, init, self-update)? [Y/n] " response
 response=${response,,} # tolower
 if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     echo "OK =)"
+
+    # Auto init first new branch based on course type
+    if git rev-parse --git-dir > /dev/null 2>&1; then
+        [[ $COURSE_MULTIPLE = 'true' ]] && FIRST_BRANCH_NAME="${COURSE_TYPE}-1.1" || FIRST_BRANCH_NAME="${COURSE_TYPE}-1"
+        read -r -p "Checkout to new branch ($FIRST_BRANCH_NAME)? [Y/n] " response
+        response=${response,,} # tolower
+        if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
+            git checkout -b $FIRST_BRANCH_NAME
+        fi
+    fi
 else
     rm .shub/bin/init.sh
     rm .shub/bin/shub-logo.sh
