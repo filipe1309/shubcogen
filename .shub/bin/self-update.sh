@@ -10,16 +10,10 @@ if [ "$REMOTE_VERSION" != "$LOCAL_VERSION" ]; then
         response=${response,,} # tolower
         if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
             echo "Updating..."
-            curl -o .shub/bin/version https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/version
-            curl -o .shub/bin/deploy.sh https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/deploy.sh
-            curl -o .shub/bin/self-update.sh https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/self-update.sh
-            curl -o .shub/bin/init.sh --create-dirs https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/init.sh
-            curl -o .shub/bin/shub-logo.sh --create-dirs https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/shub-logo.sh
-            
-            chmod +x .shub/bin/deploy.sh
-            chmod +x .shub/bin/self-update.sh
-            chmod +x .shub/bin/init.sh
-            chmod +x .shub/bin/shub-logo.sh
+            curl -o .shub/bin/links.txt --create-dirs https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/links.txt
+            cat .shub/bin/links.txt | while read CMD; do curl -o $(echo ".shub/bin/$(basename $CMD) --create-dirs $CMD"); done;
+            chmod -R +x .shub/bin/*.sh
+            mv .shub/bin/shub-deploy.sh .
             
             exit 0
         fi
