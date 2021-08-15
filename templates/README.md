@@ -1,4 +1,4 @@
-# <p align="center">{{ PROJECT_NAME }} 💀</p>
+# <p align="center">{{ PROJECT_NAME }}</p>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Tools-Docker-informational?style=flat-square&logo=docker&color=2496ED" alt="Docker" />
