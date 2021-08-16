@@ -46,7 +46,7 @@ curl https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/get.s
 
 ### 3. Generating the skeleton to your project
 
-After running the script from step 2, you'll be prompted to choose the configs of your project. Don't worry, you can always change the configs laterat `.shub/bin/config.json`.
+After running the script from step 2, you'll be prompted to choose the configs of your project. Don't worry, you can always change the configs later at `.shub/bin/config.json`.
 
 ⚠ Important: You'll be prompt to enter a couse type (`class`, `episode`, etc), and after that to initialize a new branch base on the course type. If you choose so, you'll be able to use the deploy script, and automate tag creation, commit to `notes.md` files and deploy on GitHub (see the section below).
 
@@ -71,13 +71,13 @@ For example, if your actual branch is `my-branch-1.1`, after running this script
 ## :pushpin: Roadmap
 
 - [x] Add sementic versioning
-- [ ] Add versioning into templates file
-- [ ] Add as a npm package & php package
-- [ ] Backup os existing files
+- [x] Add versioning into templates file
+- [ ] Add as a global npm package & php package
+- [x] Backup existing files
 - [ ] Improve gitignore files (get from `https://github.com/github/gitignore`)
 - [ ] Add badges generation
 - [x] Add color deploy script
-- [ ] Improve project setup `bin/generate.sh` (with 2 types: `Class` or `Episode`, or another type set by user)
+- [x] Improve project setup `bin/generate.sh` (with 2 types: `Class` or `Episode`, or another type set by user)
 - [ ] Add an visual interface to create the `README.md` & setup project configs
 - [ ] Simplify deploy script
 - [ ] Add an option to append an extra script to `deploy.sh` (like a `changelog.sh`)
@@ -87,16 +87,6 @@ For example, if your actual branch is `my-branch-1.1`, after running this script
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-### :cd: Installation
-
-```sh
-git clone git@github.com:filipe1309/shubcogen.git
-```
-
-```sh
-cd shubcogen
-```
-
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
@@ -105,7 +95,7 @@ cd shubcogen
 
 <p align="center">
     <a style="font-weight: bold" href="https://www.linkedin.com/in/filipe1309/">
-    <img style="border-radius:50%" width="100px; "src="https://avatars.githubusercontent.com/u/2081014?s=60&v=4"/>
+    <img style="border-radius:50%" width="100px; "src="https://github.com/filipe1309.png"/>
     </a>
 </p>
 

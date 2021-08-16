@@ -28,6 +28,7 @@ if git rev-parse --git-dir > /dev/null 2>&1; then
     PROJECT_REPO_LINK=$(git config --get remote.origin.url)
     PROJECT_REPO_NAME=$(basename `git rev-parse --show-toplevel`)
     GIT_BRANCH=$(git branch --show-current)
+    GIT_USERNAME=$(git config user.name)
 
     extractUserFromGitHubLInk () {
         # url="git://github.com/some-user/my-repo.git"
@@ -52,6 +53,7 @@ else
   PROJECT_REPO_LINK="{{ REPLACE_WITH_YOUR_REPO_LINK }}"
   PROJECT_REPO_NAME="{{ REPLACE_WITH_YOUR_REPO_NAME }}"
   GIT_BRANCH=""
+  GIT_USERNAME="{{ REPLACE_WITH_YOUR_NAME }}"
 fi
 
 
@@ -108,6 +110,7 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     sed -i "s/{{ COURSE_LINK }}/$COURSE_LINK/g" README.md
     sed -i "s/{{ PROJECT_REPO_NAME }}/$PROJECT_REPO_NAME/g" README.md
     sed -i "s/{{ GITHUB_USER }}/$GITHUB_USER/g" README.md
+    sed -i "s/{{ GIT_USERNAME }}/$GIT_USERNAME/g" README.md
     sed -i "s/{{ VERSION }}/$VERSION/g" README.md
 
 # Save JSON config file

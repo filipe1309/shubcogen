@@ -76,15 +76,15 @@ Please make sure to update tests as appropriate. -->
 ## About Me
 
 <p align="center">
-    <a style="font-weight: bold" href="https://www.linkedin.com/in/filipe1309/">
-    <img style="border-radius:50%" width="100px; "src="https://avatars.githubusercontent.com/u/2081014?s=60&v=4"/>
+    <a style="font-weight: bold" href="https://www.linkedin.com/in/{{ GITHUB_USER }}/">
+    <img style="border-radius:50%" width="100px; "src="https://github.com/{{ GITHUB_USER }}.png"/>
     </a>
 </p>
 
 ---
 
 <p align="center">
-    Done with ♥ by <a style="font-weight: bold" href="https://www.linkedin.com/in/filipe1309/">Filipe Leuch Bonfim</a> 🖖
+    Done with ♥ by <a style="font-weight: bold" href="https://www.linkedin.com/in/{{ GITHUB_USER }}/">Filipe Leuch Bonfim</a> 🖖
 </p>
 
 ---
