@@ -1,6 +1,23 @@
 #!/bin/bash
 
-# TODO add backup
+echo "---------------------------------------------"
+
+backup() {
+    echo "---------------------------------------------"
+    file="$1"
+    if [ -f "$file" ]; then
+        echo "Backing up $file"
+        mkdir -p .shub/backup && cp "$file" ".shub/backup/$file"
+    fi 
+}
+
+echo "Backing up files into .shub/backup ..."
+backup "README.md"
+backup "notes.md"
+
+echo "---------------------------------------------"
+
+echo "Downloading files ..."
 
 # Script files
 curl -o .shub/bin/links.txt --create-dirs https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/links.txt
