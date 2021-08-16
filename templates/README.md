@@ -84,7 +84,7 @@ Please make sure to update tests as appropriate. -->
 ---
 
 <p align="center">
-    Done with ♥ by <a style="font-weight: bold" href="https://www.linkedin.com/in/{{ GITHUB_USER }}/">Filipe Leuch Bonfim</a> 🖖
+    Done with ♥ by <a style="font-weight: bold" href="https://www.linkedin.com/in/{{ GITHUB_USER }}/">{{ GIT_USERNAME }}</a> 🖖
 </p>
 
 ---
