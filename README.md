@@ -2,9 +2,9 @@
 
 <p align="center">
     <img src="https://img.shields.io/badge/Code-ShellScript-informational?style=flat-square&logo=gnubash&color=4EAA25" alt="Go" />
-    <img src="https://img.shields.io/badge/Tools-Docker-informational?style=flat-square&logo=docker&color=2496ED" alt="Docker" />
 </p>
-    <hr>
+
+<hr>
 
 ## 💬 About
 
@@ -32,7 +32,7 @@ This project aims to be a skeleton generator for course projects deployed on Git
 - [Curl](https://curl.se/)
 - [Bash](https://www.gnu.org/software/bash/)
 
-## :runner: Usage
+## 🕹 Usage
 
 ### 1. Create you project in GitHub
 
@@ -46,15 +46,23 @@ curl https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/get.s
 
 ### 3. Generating the skeleton to your project
 
-After running the script from step 2, you'll be prompted to choose the configs of your project. Don't worry, you can always change the configs later.
+After running the script from step 2, you'll be prompted to choose the configs of your project. Don't worry, you can always change the configs laterat `.shub/bin/config.json`.
 
-### 🕹 Deploying into GitHub (optional)
+⚠ Important: You'll be prompt to enter a couse type (`class`, `episode`, etc), and after that to initialize a new branch base on the course type. If you choose so, you'll be able to use the deploy script, and automate tag creation, commit to `notes.md` files and deploy on GitHub (see the section below).
+
+### 4. Deploying into GitHub (optional)
 
 You can deploy using the `shub-deploy.sh` script. This script auto-increments the version number of the branch and creates a new tag from branch name.
 
 So you must be in a branch with a number at the end, like `my-branch-1` or `my-branch-1.1`.
 
-For example, if your branch is `my-branch-1.1`, after running this script, you will have a new tag `my-branch-1.1-some-description` and a new branch `my-branch-1.2`, and the old branch will be automatically merged into the `main`.
+For example, if your actual branch is `my-branch-1.1`, after running this script, the steps below will be performed:
+
+- A new tag `my-branch-1.1-some-description` will be created
+- The actual branch will be automatically merged into `main`
+- The `main` branch will be sent to GitHub with the new tag (with `git push && git push --tags`)
+- A new branch `my-branch-1.2` will be created
+- `notes.md` will be update with the new "version number"
 
 ```sh
 ./shub-deploy.sh
