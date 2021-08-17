@@ -134,7 +134,7 @@ echo "🏁 Starting deploy process ..."
 echo "✔ Auto commiting notes ..."
 git add notes.md && git commit -m "docs: update notes"
 
-if ! grep -q .shub ".gitignore"; then
+if test -f ".gitignore" && ! grep -q .shub ".gitignore"; then
     echo "✔ Auto commiting shub files ..."
     git add .shub && git commit -m "chore: update shub files"  
 fi

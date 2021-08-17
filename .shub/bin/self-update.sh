@@ -15,7 +15,7 @@ if [ "$REMOTE_VERSION" != "$LOCAL_VERSION" ]; then
             chmod -R +x .shub/bin/*.sh
             ln -s .shub/bin/deploy.sh shub-deploy.sh
 
-            if ! grep -q .shub ".gitignore"; then
+            if test -f ".gitignore" && ! grep -q .shub ".gitignore"; then
                 echo "✔ Auto commiting shub files ..."
                 git add .shub && git commit -m "chore: update shub files"  
             fi
