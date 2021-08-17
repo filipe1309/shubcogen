@@ -78,6 +78,14 @@ else
     COURSE_MULTIPLE='true'
 fi
 
+SHUB_VERSION='true'
+read -r -p "Remove ShubcoGen from app version control? [Y/n] " response
+response=${response,,} # tolower
+if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
+    SHUB_VERSION='false'
+    echo ".shub" >> .gitignore
+fi
+
 JSON_TEMPLATE='{
     "version": "%s",
     "project": {
@@ -89,9 +97,10 @@ JSON_TEMPLATE='{
         "link": "%s",
         "type": "%s",
         "multiple": %s
-    }
+    },
+    "vcs": "%s"
 }\n'
-JSON_CONFIG=$(printf "$JSON_TEMPLATE" "$VERSION" "$PROJECT_NAME" "$PROJECT_REPO_LINK" "$COURSE_NAME" "$COURSE_LINK" "$COURSE_TYPE" "$COURSE_MULTIPLE")
+JSON_CONFIG=$(printf "$JSON_TEMPLATE" "$VERSION" "$PROJECT_NAME" "$PROJECT_REPO_LINK" "$COURSE_NAME" "$COURSE_LINK" "$COURSE_TYPE" "$COURSE_MULTIPLE" "$SHUB_VERSION")
 
 echo ""
 echo "---------------------------------------------"
@@ -114,7 +123,7 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     sed -i "s/{{ VERSION }}/$VERSION/g" README.md
 
 # Save JSON config file
-cat <<EOF > .shub/bin/config.json
+cat <<EOF > shub-config.json
 $JSON_CONFIG
 EOF
 fi

@@ -46,9 +46,9 @@ curl https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/get.s
 
 ### 3. Generating the skeleton to your project
 
-After running the script from step 2, you'll be prompted to choose the configs of your project. Don't worry, you can always change the configs later at `.shub/bin/config.json`.
+After running the script from step 2, you'll be prompted to choose the configs of your project. Don't worry, you can always change the configs later at `shub-config.json`.
 
-⚠ Important: You'll be prompt to enter a couse type (`class`, `episode`, etc), and after that to initialize a new branch base on the course type. If you choose so, you'll be able to use the deploy script, and automate tag creation, commit to `notes.md` files and deploy on GitHub (see the section below).
+> ⚠ Important: You'll be prompt to enter a couse type (`class`, `episode`, etc), and after that to initialize a new branch base on the course type. If you choose so, you'll be able to use the deploy script, and automate tag creation, commit to `notes.md` files and deploy on GitHub (see the section below).
 
 ### 4. Deploying into GitHub (optional)
 
@@ -58,11 +58,11 @@ So you must be in a branch with a number at the end, like `my-branch-1` or `my-b
 
 For example, if your actual branch is `my-branch-1.1`, after running this script, the steps below will be performed:
 
-- A new tag `my-branch-1.1-some-description` will be created
-- The actual branch will be automatically merged into `main`
-- The `main` branch will be sent to GitHub with the new tag (with `git push && git push --tags`)
-- A new branch `my-branch-1.2` will be created
-- `notes.md` will be update with the new "version number"
+1. A new tag `my-branch-1.1-some-description` will be created
+2. The actual branch will be automatically merged into `main`
+3. The `main` branch will be sent to GitHub with the new tag (with `git push && git push --tags`)
+4. A new branch `my-branch-1.2` will be created
+5. `notes.md` will be update with the new "version number"
 
 ```sh
 ./shub-deploy.sh

@@ -14,6 +14,11 @@ if [ "$REMOTE_VERSION" != "$LOCAL_VERSION" ]; then
             cat .shub/bin/links.txt | while read CMD; do curl -o $(echo ".shub/bin/$(basename $CMD) --create-dirs $CMD"); done;
             chmod -R +x .shub/bin/*.sh
             ln -s .shub/bin/deploy.sh shub-deploy.sh
+
+            if ! grep -q .shub ".gitignore"; then
+                echo "✔ Auto commiting shub files ..."
+                git add .shub && git commit -m "chore: update shub files"  
+            fi
             
             exit 0
         fi
