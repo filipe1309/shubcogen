@@ -17,7 +17,6 @@ This project aims to be a skeleton generator for course projects deployed on Git
 - [x] `README.md`
 - [x] `notes.md`
 - [x] Deploy script (optional) with auto create tag, auto commit to `notes.md` files & deploy on GitHub
-- [x] Pre-push script (optional)
 - [x] Self-Update script
 - [x] Docker scripts & images (optional)
 

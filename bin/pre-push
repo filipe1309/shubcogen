@@ -2,9 +2,22 @@
 
 # DOTR
 
-# Aut incremeent Tag Version (with semantic versioning) on pr-commit
-
 VERSION=$(head -n 1 .shub/bin/version)
+
+# Update Tag Version (with semantic versioning) on post-push
+
+NEWEST_TAG=$(git describe --abbrev=0 --tags)
+
+echo $NEWEST_TAG
+echo $VERSION
+echo "version $VERSION"
+
+if [ x$NEWEST_TAG != x$VERSION ]; then
+    echo "NEW VERSION TAG ADDED: $VERSION"
+    git tag -a $VERSION -m "Version $VERSION"
+fi
+
+# Auto incremeent Tag Version (with semantic versioning) on pre-push
 
 major=`echo $VERSION | cut -d. -f1`
 minor=`echo $VERSION | cut -d. -f2`
