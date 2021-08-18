@@ -2,6 +2,8 @@
 
 # DOTR
 
+.shub/bin/shub-logo.sh
+
 VERSION=$(head -n 1 .shub/bin/version)
 
 # Auto incremeent Tag Version (with semantic versioning) on pre-push
@@ -21,6 +23,7 @@ echo 'Which type of update:'
 
 # Allows us to read user input below, assigns stdin to keyboard
 exec < /dev/tty
+
 select type in major minor revision
 do
         case $type in 
@@ -75,7 +78,6 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     echo -e "\xE2\x9C\x94 Done"
 fi
 
-
 # Update Tag Version (with semantic versioning) on pre-push
 
 echo "[pre-push hook] Setting new version tag ..."
@@ -87,6 +89,15 @@ echo $NEW_VERSION
 echo "version $NEW_VERSION"
 
 if [ x$NEWEST_TAG != x$NEW_VERSION ]; then
-    echo "NEW VERSION TAG ADDED: $NEW_VERSION"
-    git tag -a $NEW_VERSION -m "Version $NEW_VERSION"
+    echo "Last tag ($NEWEST_TAG) differs from last version ($NEW_VERSION)"
+    echo "Generating a new tag ($NEW_VERSION)..."
+
+    NEW_VERSION_DESCRIPTION_DEFAULT="Version $NEW_VERSION"
+    printf 'Version description [%s]?' $NEW_VERSION_DESCRIPTION_DEFAULT
+    read -r NEW_VERSION_DESCRIPTION
+    if [ -z "$NEW_VERSION_DESCRIPTION"  -a "$NEW_VERSION_DESCRIPTION" != " " ]; then
+        NEW_VERSION_DESCRIPTION=$NEW_VERSION_DESCRIPTION_DEFAULT
+    fi
+
+    git tag -a $NEW_VERSION -m "$NEW_VERSION_DESCRIPTION" && echo "New tag ($NEW_VERSION) created"
 fi
