@@ -88,6 +88,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Push from your terminal to active auto-versioning & auto-tagging (from `pre-push` git hook).
 
+Push with `deploy.sh` script.
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
