@@ -74,6 +74,7 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     echo "Updating..."
     sed -i "s/$VERSION/$NEW_VERSION/g" .shub/bin/version
     git add .shub/bin/version
+    git commit -m "chore: version updated"
     
     echo -e "\xE2\x9C\x94 Done"
 fi
