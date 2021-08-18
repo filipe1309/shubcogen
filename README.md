@@ -86,6 +86,8 @@ For example, if your actual branch is `my-branch-1.1`, after running this script
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+Push from your terminal to active auto-versioning & auto-tagging (from `pre-push` git hook).
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
