@@ -20,3 +20,5 @@ wget https://raw.githubusercontent.com/filipe1309/skeleton-courses/main/template
 wget https://raw.githubusercontent.com/filipe1309/skeleton-courses/main/notes.md
 
 cp bin/post-commit .git/hooks/
+
+ln -s bin/pre-push .git/hooks
