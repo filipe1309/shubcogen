@@ -4,20 +4,9 @@
 
 VERSION=$(head -n 1 .shub/bin/version)
 
-# Update Tag Version (with semantic versioning) on post-push
-
-NEWEST_TAG=$(git describe --abbrev=0 --tags)
-
-echo $NEWEST_TAG
-echo $VERSION
-echo "version $VERSION"
-
-if [ x$NEWEST_TAG != x$VERSION ]; then
-    echo "NEW VERSION TAG ADDED: $VERSION"
-    git tag -a $VERSION -m "Version $VERSION"
-fi
-
 # Auto incremeent Tag Version (with semantic versioning) on pre-push
+
+echo "[pre-push hook] Setting new version ..."
 
 major=`echo $VERSION | cut -d. -f1`
 minor=`echo $VERSION | cut -d. -f2`
@@ -30,7 +19,8 @@ echo ""
 
 echo 'Which type of update:'
 
-exec < /dev/tty # to work with git hooks
+# Allows us to read user input below, assigns stdin to keyboard
+exec < /dev/tty
 select type in major minor revision
 do
         case $type in 
@@ -83,4 +73,20 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     git add .shub/bin/version
     
     echo -e "\xE2\x9C\x94 Done"
+fi
+
+
+# Update Tag Version (with semantic versioning) on pre-push
+
+echo "[pre-push hook] Setting new version tag ..."
+
+NEWEST_TAG=$(git describe --abbrev=0 --tags)
+
+echo $NEWEST_TAG
+echo $NEW_VERSION
+echo "version $NEW_VERSION"
+
+if [ x$NEWEST_TAG != x$NEW_VERSION ]; then
+    echo "NEW VERSION TAG ADDED: $NEW_VERSION"
+    git tag -a $NEW_VERSION -m "Version $NEW_VERSION"
 fi
