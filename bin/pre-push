@@ -94,7 +94,7 @@ if [ x$NEWEST_TAG != x$NEW_VERSION ]; then
     echo "Generating a new tag ($NEW_VERSION)..."
 
     NEW_VERSION_DESCRIPTION_DEFAULT="Version $NEW_VERSION"
-    printf 'Version description [%s]?' "$NEW_VERSION_DESCRIPTION_DEFAULT"
+    printf 'Version description [%s]: ' "$NEW_VERSION_DESCRIPTION_DEFAULT"
     read -r NEW_VERSION_DESCRIPTION
     if [ -z "$NEW_VERSION_DESCRIPTION"  -a "$NEW_VERSION_DESCRIPTION" != " " ]; then
         NEW_VERSION_DESCRIPTION=$NEW_VERSION_DESCRIPTION_DEFAULT
