@@ -3,4 +3,5 @@ https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/deploy.sh
 https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/self-update.sh
 https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/init.sh
 https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/shub-logo.sh
+https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/colors.sh
             

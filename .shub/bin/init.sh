@@ -150,6 +150,7 @@ else
     rm .shub/bin/init.sh
     rm .shub/bin/shub-logo.sh
     rm .shub/bin/deploy.sh
+    rm .shub/bin/colors.sh
     rm .shub/bin/self-update.sh
     rm .shub/bin/links.txt
 fi
