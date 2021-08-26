@@ -120,7 +120,7 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     # Update template
     sed -i "s/{{ PROJECT_NAME }}/$PROJECT_NAME/g" README.md
     sed -i "s/{{ COURSE_NAME }}/$COURSE_NAME/g" README.md
-    sed -i "s/{{ COURSE_LINK }}/$COURSE_LINK/g" README.md
+    sed -i "s,{{ COURSE_LINK }},$COURSE_LINK,g" README.md
     sed -i "s/{{ PROJECT_REPO_NAME }}/$PROJECT_REPO_NAME/g" README.md
     sed -i "s/{{ GITHUB_USER }}/$GITHUB_USER/g" README.md
     sed -i "s/{{ GIT_USERNAME }}/$GIT_USERNAME/g" README.md
