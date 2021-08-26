@@ -62,8 +62,12 @@ fi
 echo "Type below some infos about the course"
 echo "---------------------------------------------"
 
-printf 'Project name: '
+PROJECT_DEFAULT_NAME=${PROJECT_REPO_NAME//-/ } # Replace all '-' with ' '
+PROJECT_DEFAULT_NAME=( $PROJECT_DEFAULT_NAME ) # without quotes
+PROJECT_DEFAULT_NAME="${PROJECT_DEFAULT_NAME[@]^}" # cap first letter
+printf 'Project name [%s]: ' "$PROJECT_DEFAULT_NAME"
 read -r PROJECT_NAME
+[ -z "$PROJECT_NAME" ] && PROJECT_NAME="$PROJECT_DEFAULT_NAME"
 printf 'Course name: '
 read -r COURSE_NAME
 printf 'Course link: '
