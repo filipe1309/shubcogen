@@ -4,7 +4,7 @@
 
 .shub/bin/shub-logo.sh
 
-.shub/bin/colors.sh
+source .shub/bin/colors.sh
 
 VERSION=$(head -n 1 .shub/bin/version)
 

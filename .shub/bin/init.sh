@@ -154,4 +154,5 @@ else
     rm .shub/bin/links.txt
 fi
 
+echo "---------------------------------------------"
 echo -e "\xE2\x9C\x94 CONFIGURATION COMPLETED"
