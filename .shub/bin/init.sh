@@ -151,6 +151,7 @@ else
     rm .shub/bin/shub-logo.sh
     rm .shub/bin/deploy.sh
     rm .shub/bin/self-update.sh
+    rm .shub/bin/links.txt
 fi
 
 echo -e "\xE2\x9C\x94 CONFIGURATION COMPLETED"
