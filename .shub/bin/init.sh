@@ -144,6 +144,8 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         response=${response,,} # tolower
         if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
             git checkout -b $FIRST_BRANCH_NAME
+            echo "## ${FIRST_BRANCH_NAME^^}" >> notes.md
+            echo "" >> notes.md
         fi
     fi
 else
