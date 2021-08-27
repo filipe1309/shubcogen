@@ -68,28 +68,24 @@ PROJECT_DEFAULT_NAME="${PROJECT_DEFAULT_NAME[@]^}" # cap first letter
 printf 'Project name [%s]: ' "$PROJECT_DEFAULT_NAME"
 read -r PROJECT_NAME
 [ -z "$PROJECT_NAME" ] && PROJECT_NAME="$PROJECT_DEFAULT_NAME"
+
 printf 'Course name: '
 read -r COURSE_NAME
+
 printf 'Course link: '
 read -r COURSE_LINK
+
 printf 'Course type [class]: '
 read -r COURSE_TYPE
 [ -z "$COURSE_TYPE" ] && COURSE_TYPE="class"
+
+COURSE_MULTIPLE='true'
 read -r -p "This course will be unique? [Y/n] " COURSE_MULTIPLE
-COURSE_MULTIPLE=${COURSE_MULTIPLE,,} # tolower
-if [[ $COURSE_MULTIPLE =~ ^(yes|y| ) ]] || [[ -z $COURSE_MULTIPLE ]]; then
-    COURSE_MULTIPLE='false'
-else
-    COURSE_MULTIPLE='true'
-fi
+[[ $response =~ ^(yes|y|YES|Y| ) ]] || [[ -z $response ]] && COURSE_MULTIPLE='false'
 
 SHUB_VERSION='true'
 read -r -p "Remove ShubcoGen from app version control? [Y/n] " response
-response=${response,,} # tolower
-if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
-    SHUB_VERSION='false'
-    echo ".shub" >> .gitignore
-fi
+[[ $response =~ ^(yes|y|YES|Y| ) ]] || [[ -z $response ]] && SHUB_VERSION='false' && echo ".shub" >> .gitignore
 
 JSON_TEMPLATE='{
     "version": "%s",
@@ -133,7 +129,7 @@ $JSON_CONFIG
 EOF
 fi
 
-read -r -p "Keep shub scripts (deploy, init, self-update)? [Y/n] " response
+read -r -p "Keep shub scripts (deploy, init, self-update...)? [Y/n] " response
 response=${response,,} # tolower
 if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     echo "OK =)"
@@ -155,4 +151,7 @@ else
 fi
 
 echo "---------------------------------------------"
+echo ""
 echo -e "\xE2\x9C\x94 CONFIGURATION COMPLETED"
+echo ""
+echo "---------------------------------------------"

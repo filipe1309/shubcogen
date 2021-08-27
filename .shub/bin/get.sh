@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 echo "---------------------------------------------"
 
 backup() {
@@ -11,13 +13,18 @@ backup() {
     fi 
 }
 
+echo ""
+
 echo "Backing up files into .shub/backup ..."
 backup "README.md"
 backup "notes.md"
 
+echo ""
 echo "---------------------------------------------"
-
+echo ""
 echo "Downloading files ..."
+echo ""
+echo "---------------------------------------------"
 
 # Script files
 curl -o .shub/bin/links.txt --create-dirs https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/links.txt
