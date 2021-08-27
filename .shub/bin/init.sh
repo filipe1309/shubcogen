@@ -72,8 +72,9 @@ printf 'Course name: '
 read -r COURSE_NAME
 printf 'Course link: '
 read -r COURSE_LINK
-printf 'Course type (class, episode...): '
+printf 'Course type [class]: '
 read -r COURSE_TYPE
+[ -z "$COURSE_TYPE" ] && COURSE_TYPE="class"
 read -r -p "This course will be unique? [Y/n] " COURSE_MULTIPLE
 COURSE_MULTIPLE=${COURSE_MULTIPLE,,} # tolower
 if [[ $COURSE_MULTIPLE =~ ^(yes|y| ) ]] || [[ -z $COURSE_MULTIPLE ]]; then
