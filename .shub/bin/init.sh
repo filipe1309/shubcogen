@@ -150,7 +150,8 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         fi
     fi
 else
-    rm -rf .shub/bin
+    rm -rf .shub
+    rm shub-deploy.sh
 fi
 
 echo "---------------------------------------------"
