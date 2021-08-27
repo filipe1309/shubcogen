@@ -126,20 +126,29 @@ if ( ! test -f ".gitignore" ) || ( test -f ".gitignore" && ! grep -q .shub ".git
 fi
 
 echo "---------------------------------------------"
+echo ""
 confirm "Checkout to \"$GIT_DEFAULT_BRANCH\" branch & Merge current branch ($GIT_BRANCH)? [Y/n]" && { git checkout $GIT_DEFAULT_BRANCH  || { echo -e "$FAILED_MSG" ; exit 1; } } && { git merge $GIT_BRANCH  || { echo -e "$FAILED_MSG" ; exit 1; } }
-
-generateTag
-
+echo ""
 echo "---------------------------------------------"
+echo ""
+generateTag
+echo ""
+echo "---------------------------------------------"
+echo ""
+echo "---------------------------------------------"
+echo ""
 confirm "Deploy on \"$GIT_DEFAULT_BRANCH\" branch? [Y/n]" && { git push origin $GIT_DEFAULT_BRANCH  || { echo -e "$FAILED_MSG" ; exit 1; } } && { git push origin $GIT_DEFAULT_BRANCH --tags  || { echo -e "$FAILED_MSG" ; exit 1; } }
-
+echo ""
 echo "---------------------------------------------"
 
 echo -e "${BG_GREEN}"
 echo -e "\xE2\x9C\x94 DEPLOY COMPLETED"
 echo -e "${NO_BG}"
-
+echo ""
+echo "---------------------------------------------"
+echo ""
 confirm "Go to next class/episode? ($GIT_BRANCH_NEXT_CLASS_LW) [Y/n]" && git checkout -b $GIT_BRANCH_NEXT_CLASS_LW
+echo ""
 echo "## ${GIT_BRANCH_NEXT_CLASS^^}" >> notes.md
 echo "" >> notes.md
 
