@@ -18,19 +18,19 @@
 
 ## 💬 About
 
-This project was developed following [{{ COURSE_NAME }}]({{ COURSE_LINK }}) course.
+This project was developed following [{{ COURSE_NAME }}]({{ COURSE_LINK }}) {{ COURSE_TYPE }}.
 
 ## :computer: Technologies
 
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/)
-- [Dockerize](https://github.com/jwilder/dockerize)
 - [PHP](https://www.php.net/)
 - [Go](https://golang.org/)
 - [Node.js](https://nodejs.org/en/)
 - [Nginx](https://www.nginx.com/)
 - [MySQL](https://www.mysql.com/)
 - [Node MySQL2](https://www.npmjs.com/package/mysql2)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Dockerize](https://github.com/jwilder/dockerize)
 
 ## :scroll: Requirements
 
@@ -53,7 +53,7 @@ cd {{ PROJECT_REPO_NAME }}
 docker-compose up
 ```
 
-> Access http://localhost:8000
+> Access http://localhost
 
 <!-- ## :white_check_mark: Tests
 
