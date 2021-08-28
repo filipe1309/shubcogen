@@ -59,7 +59,7 @@ generateTag() {
     if [[ $NEWEST_TAG != *$GIT_BRANCH* ]]; then
         # if arguments [ $# -eq 0 ]
         if [ $# -eq 0 ]; then
-            read -r -p "Do you want to tag? [Y/n] " response
+            read -r -p "Do you want to $(echo -e $BG_GREEN"tag"$NO_BG) [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
             response=${response,,} # tolower
             if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
                 echo "# TAG MESSAGE"
@@ -86,7 +86,7 @@ generateTag() {
                 echo "Tag:    [name]= \"$TAG_NAME\" || [msg]= \"$TAG_MSG\""
                 echo "---------------------------------------------"
 
-                read -r -p "Are you sure? [Y/n] " response
+                read -r -p "Are you sure [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
                 response=${response,,} # tolower
 
                 if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then

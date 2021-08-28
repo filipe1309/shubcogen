@@ -5,10 +5,11 @@
 exec 0< /dev/tty
 
 .shub/bin/shub-logo.sh
+source .shub/bin/colors.sh        
 
 echo "---------------------------------------------"
 
-read -r -p "Config template? [Y/n] " response
+read -r -p "Config template [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
 response=${response,,} # tolower
 if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     
@@ -62,22 +63,22 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         PROJECT_DEFAULT_NAME=${PROJECT_REPO_NAME//-/ } # Replace all '-' with ' '
         PROJECT_DEFAULT_NAME=( $PROJECT_DEFAULT_NAME ) # without quotes
         PROJECT_DEFAULT_NAME="${PROJECT_DEFAULT_NAME[@]^}" # cap first letter
-        printf 'Project name [%s]: ' "$PROJECT_DEFAULT_NAME"
+        printf "Project name [$BG_GREEN%s$NO_BG]: " "$PROJECT_DEFAULT_NAME"
         read -r PROJECT_NAME
         [ -z "$PROJECT_NAME" ] && PROJECT_NAME="$PROJECT_DEFAULT_NAME"
 
-        printf 'Course name: '
+        printf 'Course name []: '
         read -r COURSE_NAME
 
-        printf 'Course link: '
+        printf 'Course link []: '
         read -r COURSE_LINK
 
-        printf 'Course type [class]: '
+        printf "Course type (e.g. class, episode, article) [$BG_GREEN%s$NO_BG]: " "class"
         read -r COURSE_TYPE
         [ -z "$COURSE_TYPE" ] && COURSE_TYPE="class"
 
         COURSE_MULTIPLE='true'
-        read -r -p "This course will be unique? [Y/n] " response
+        read -r -p "This course will be $(echo -e $BG_GREEN"unique"$NO_BG) [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
         [[ $response =~ ^(yes|y|YES|Y| ) ]] || [[ -z $response ]] && COURSE_MULTIPLE='false'
 
         SHUB_VERSION='true'
@@ -102,7 +103,7 @@ JSON_TEMPLATE='{
 
     if [ -f "shub-config.json" ]; then
         echo "shub-config.json detected"
-        read -r -p "Use shub-config.json configs? [Y/n] " response
+        read -r -p "Use $(echo -e $BG_GREEN"shub-config.json"$NO_BG) configs [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
         response=${response,,} # tolower
         if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
             function parse_json()
@@ -153,7 +154,7 @@ JSON_TEMPLATE='{
     echo "---------------------------------------------"
     echo ""
 
-    read -r -p "Accept configs? [Y/n] " response
+    read -r -p "Accept configs [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
     response=${response,,} # tolower
     if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         # Update template
@@ -172,7 +173,7 @@ $JSON_CONFIG
 EOF
     fi
 
-    read -r -p "Keep shub scripts (deploy, init, self-update...)? [Y/n] " response
+    read -r -p "Keep shub scripts (deploy, init, self-update...) [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
     response=${response,,} # tolower
     if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         echo "OK =)"
