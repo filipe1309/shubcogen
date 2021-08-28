@@ -3,8 +3,12 @@
 # DevOntheRun Deploy Script
 
 .shub/bin/shub-logo.sh
-
+source .shub/bin/helpers.sh
 source .shub/bin/colors.sh
+
+# Read json file content
+JSON_CONFIG="$(cat shub-config.json)"
+COURSE_TYPE=$(parse_json "$JSON_CONFIG" course_type)
 
 VERSION=$(head -n 1 .shub/bin/version)
 
@@ -40,16 +44,6 @@ GIT_BRANCH_NEXT_CLASS=$CLASS_TYPE$(($CLASS_NUMBER + 1))
 GIT_BRANCH_NEXT_CLASS_LW=${GIT_BRANCH_NEXT_CLASS,,}  # tolower
 GIT_BRANCH_NEXT_CLASS_UP=${GIT_BRANCH_NEXT_CLASS^^}  # toupper
 
-confirm() {
-    read -r -p "${1:-Are you sure? [Y/n]} " response
-    response=${response,,} # tolower
-    if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
-        echo "Ok"
-    else
-        exit 0;
-    fi
-}
-
 echo "Branch to deploy: $GIT_BRANCH"
 echo "Next branch: $GIT_BRANCH_NEXT_CLASS_LW"
 
@@ -57,7 +51,6 @@ echo "---------------------------------------------"
 
 generateTag() {
     if [[ $NEWEST_TAG != *$GIT_BRANCH* ]]; then
-        # if arguments [ $# -eq 0 ]
         if [ $# -eq 0 ]; then
             read -r -p "Do you want to $(echo -e $BG_GREEN"tag"$NO_BG) [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
             response=${response,,} # tolower
@@ -127,7 +120,7 @@ fi
 
 echo "---------------------------------------------"
 echo ""
-confirm "Checkout to \"$GIT_DEFAULT_BRANCH\" branch & Merge current branch ($GIT_BRANCH)? [Y/n]" && { git checkout $GIT_DEFAULT_BRANCH  || { echo -e "$FAILED_MSG" ; exit 1; } } && { git merge $GIT_BRANCH  || { echo -e "$FAILED_MSG" ; exit 1; } }
+confirm "Checkout to \"$(echo -e $BG_GREEN"$GIT_DEFAULT_BRANCH"$NO_BG)\" branch & Merge current branch ($GIT_BRANCH) [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " && { git checkout $GIT_DEFAULT_BRANCH  || { echo -e "$FAILED_MSG" ; exit 1; } } && { git merge $GIT_BRANCH  || { echo -e "$FAILED_MSG" ; exit 1; } }
 echo ""
 echo "---------------------------------------------"
 echo ""
@@ -137,7 +130,7 @@ echo "---------------------------------------------"
 echo ""
 echo "---------------------------------------------"
 echo ""
-confirm "Deploy on \"$GIT_DEFAULT_BRANCH\" branch? [Y/n]" && { git push origin $GIT_DEFAULT_BRANCH  || { echo -e "$FAILED_MSG" ; exit 1; } } && { git push origin $GIT_DEFAULT_BRANCH --tags  || { echo -e "$FAILED_MSG" ; exit 1; } }
+confirm "Deploy on \"$(echo -e $BG_GREEN"$GIT_DEFAULT_BRANCH"$NO_BG)\" branch [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " && { git push origin $GIT_DEFAULT_BRANCH  || { echo -e "$FAILED_MSG" ; exit 1; } } && { git push origin $GIT_DEFAULT_BRANCH --tags  || { echo -e "$FAILED_MSG" ; exit 1; } }
 echo ""
 echo "---------------------------------------------"
 
@@ -147,7 +140,7 @@ echo -e "${NO_BG}"
 echo ""
 echo "---------------------------------------------"
 echo ""
-confirm "Go to next class/episode? ($GIT_BRANCH_NEXT_CLASS_LW) [Y/n]" && git checkout -b $GIT_BRANCH_NEXT_CLASS_LW
+confirm "Go to next \"$(echo -e $BG_GREEN"$COURSE_TYPE"$NO_BG)\" ($GIT_BRANCH_NEXT_CLASS_LW) [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " && git checkout -b $GIT_BRANCH_NEXT_CLASS_LW
 echo ""
 echo "## ${GIT_BRANCH_NEXT_CLASS^^}" >> notes.md
 echo "" >> notes.md
