@@ -67,6 +67,9 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         read -r PROJECT_NAME
         [ -z "$PROJECT_NAME" ] && PROJECT_NAME="$PROJECT_DEFAULT_NAME"
 
+        printf 'Course source (e.g. Dotr Channel, Alura, Pluralsight) []: '
+        read -r COURSE_SOURCE
+
         printf 'Course name []: '
         read -r COURSE_NAME
 
@@ -92,13 +95,14 @@ JSON_TEMPLATE='{
     "project_name": "%s",
     "project_repo_name": "%s",
     "project_repo_link": "%s",
+    "course_source": "%s",
     "course_name": "%s",
     "course_link": "%s",
     "course_type": "%s",
     "course_multiple": "%s",
     "vcs": "%s"
 }\n'
-        JSON_CONFIG=$(printf "$JSON_TEMPLATE" "$VERSION" "$GIT_USERNAME" "$GITHUB_USER" "$PROJECT_NAME" "$PROJECT_REPO_NAME" "$PROJECT_REPO_LINK" "$COURSE_NAME" "$COURSE_LINK" "$COURSE_TYPE" "$COURSE_MULTIPLE" "$SHUB_VERSION")
+        JSON_CONFIG=$(printf "$JSON_TEMPLATE" "$VERSION" "$GIT_USERNAME" "$GITHUB_USER" "$PROJECT_NAME" "$PROJECT_REPO_NAME" "$PROJECT_REPO_LINK" "$COURSE_SOURCE" "$COURSE_NAME" "$COURSE_LINK" "$COURSE_TYPE" "$COURSE_MULTIPLE" "$SHUB_VERSION")
     }
 
     if [ -f "shub-config.json" ]; then
@@ -134,6 +138,7 @@ JSON_TEMPLATE='{
             PROJECT_NAME=$(parse_json "$JSON_CONFIG" project_name)
             PROJECT_REPO_NAME=$(parse_json "$JSON_CONFIG" project_repo_name)
             PROJECT_REPO_LINK=$(parse_json "$JSON_CONFIG" project_repo_link)
+            COURSE_SOURCE=$(parse_json "$JSON_CONFIG" course_source)
             COURSE_NAME=$(parse_json "$JSON_CONFIG" course_name)
             COURSE_LINK=$(parse_json "$JSON_CONFIG" course_link)
             COURSE_TYPE=$(parse_json "$JSON_CONFIG" course_type)
@@ -159,6 +164,7 @@ JSON_TEMPLATE='{
     if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         # Update template
         sed -i "s/{{ PROJECT_NAME }}/$PROJECT_NAME/g" README.md
+        sed -i "s/{{ COURSE_SOURCE }}/$COURSE_SOURCE/g" README.md
         sed -i "s/{{ COURSE_NAME }}/$COURSE_NAME/g" README.md
         sed -i "s,{{ COURSE_LINK }},$COURSE_LINK,g" README.md
         sed -i "s,{{ COURSE_TYPE }},$COURSE_TYPE,g" README.md
