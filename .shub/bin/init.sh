@@ -181,7 +181,7 @@ EOF
         # Auto init first new branch based on course type
         if git rev-parse --git-dir > /dev/null 2>&1; then
             [[ $COURSE_MULTIPLE = 'true' ]] && FIRST_BRANCH_NAME="${COURSE_TYPE}-1.1" || FIRST_BRANCH_NAME="${COURSE_TYPE}-1"
-            read -r -p "Checkout to new branch ($FIRST_BRANCH_NAME)? [Y/n] " response
+            read -r -p "Checkout to new branch ($FIRST_BRANCH_NAME) [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
             response=${response,,} # tolower
             if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
                 git checkout -b $FIRST_BRANCH_NAME
