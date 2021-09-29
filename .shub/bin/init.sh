@@ -10,7 +10,7 @@ source .shub/bin/colors.sh
 echo "---------------------------------------------"
 
 read -r -p "Config template [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
-response=${response,,} # tolower
+response=$(echo "$response" | tr '[:upper:]' '[:lower:]') # tolower
 if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     
     clear
@@ -108,7 +108,7 @@ JSON_TEMPLATE='{
     if [ -f "shub-config.json" ]; then
         echo "shub-config.json detected"
         read -r -p "Use $(echo -e $BG_GREEN"shub-config.json"$NO_BG) configs [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
-        response=${response,,} # tolower
+        response=$(echo "$response" | tr '[:upper:]' '[:lower:]') # tolower
         if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
             function parse_json()
             {
@@ -160,7 +160,7 @@ JSON_TEMPLATE='{
     echo ""
 
     read -r -p "Accept configs [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
-    response=${response,,} # tolower
+    response=$(echo "$response" | tr '[:upper:]' '[:lower:]') # tolower
     if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         # Update template
         sed -i "s/{{ PROJECT_NAME }}/$PROJECT_NAME/g" README.md
@@ -180,7 +180,7 @@ EOF
     fi
 
     read -r -p "Keep shub scripts (deploy, init, self-update...) [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
-    response=${response,,} # tolower
+    response=$(echo "$response" | tr '[:upper:]' '[:lower:]') # tolower
     if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         echo "OK =)"
 
@@ -188,10 +188,11 @@ EOF
         if git rev-parse --git-dir > /dev/null 2>&1; then
             [[ $COURSE_MULTIPLE = 'true' ]] && FIRST_BRANCH_NAME="${COURSE_TYPE}-1.1" || FIRST_BRANCH_NAME="${COURSE_TYPE}-1"
             read -r -p "Checkout to new branch ($FIRST_BRANCH_NAME) [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
-            response=${response,,} # tolower
+            response=$(echo "$response" | tr '[:upper:]' '[:lower:]') # tolower
             if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
                 git checkout -b $FIRST_BRANCH_NAME
-                echo "## ${FIRST_BRANCH_NAME^^}" >> notes.md
+                FIRST_BRANCH_NAME=$(echo "$FIRST_BRANCH_NAME" | tr '[:lower:]' '[:upper:]')  # toupper
+                echo "## $FIRST_BRANCH_NAME" >> notes.md
                 echo "" >> notes.md
             fi
         fi

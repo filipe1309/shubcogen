@@ -41,8 +41,8 @@ fi
 CLASS_NUMBER=${ADDR[1]}
 
 GIT_BRANCH_NEXT_CLASS=$CLASS_TYPE$(($CLASS_NUMBER + 1))
-GIT_BRANCH_NEXT_CLASS_LW=${GIT_BRANCH_NEXT_CLASS,,}  # tolower
-GIT_BRANCH_NEXT_CLASS_UP=${GIT_BRANCH_NEXT_CLASS^^}  # toupper
+GIT_BRANCH_NEXT_CLASS_LW=$(echo "$GIT_BRANCH_NEXT_CLASS" | tr '[:upper:]' '[:lower:]')  # tolower
+GIT_BRANCH_NEXT_CLASS_UP=$(echo "$GIT_BRANCH_NEXT_CLASS" | tr '[:lower:]' '[:upper:]')  # toupper
 
 echo "Branch to deploy: $GIT_BRANCH"
 echo "Next branch: $GIT_BRANCH_NEXT_CLASS_LW"
@@ -53,7 +53,7 @@ generateTag() {
     if [[ $NEWEST_TAG != *$GIT_BRANCH* ]]; then
         if [ $# -eq 0 ]; then
             read -r -p "Do you want to $(echo -e $BG_GREEN"tag"$NO_BG) [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
-            response=${response,,} # tolower
+            response=$(echo "$response" | tr '[:upper:]' '[:lower:]') # tolower
             if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
                 echo "# TAG MESSAGE"
                 echo "# Example: \"$(git tag -n9 | head -n 1 | awk '{for(i=2;i<=NF;++i)printf $i FS}')\""
@@ -80,7 +80,7 @@ generateTag() {
                 echo "---------------------------------------------"
 
                 read -r -p "Are you sure [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
-                response=${response,,} # tolower
+                response=$(echo "$response" | tr '[:upper:]' '[:lower:]') # tolower
 
                 if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
                     git tag -a $TAG_NAME -m "$TAG_MSG"
@@ -142,6 +142,7 @@ echo "---------------------------------------------"
 echo ""
 confirm "Go to next \"$(echo -e $BG_GREEN"$COURSE_TYPE"$NO_BG)\" ($GIT_BRANCH_NEXT_CLASS_LW) [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " && git checkout -b $GIT_BRANCH_NEXT_CLASS_LW
 echo ""
-echo "## ${GIT_BRANCH_NEXT_CLASS^^}" >> notes.md
+GIT_BRANCH_NEXT_CLASS=$(echo "$GIT_BRANCH_NEXT_CLASS" | tr '[:lower:]' '[:upper:]')  # toupper
+echo "## $GIT_BRANCH_NEXT_CLASS" >> notes.md
 echo "" >> notes.md
 

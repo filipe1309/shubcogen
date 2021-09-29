@@ -22,7 +22,7 @@ function parse_json() {
 
 function confirm() {
     read -r -p "${1:-Are you sure? [Y/n]} " response
-    response=${response,,} # tolower
+    response=$(echo "$response" | tr '[:upper:]' '[:lower:]') # tolower
     if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         echo "Ok"
     else

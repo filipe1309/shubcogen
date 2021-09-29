@@ -7,7 +7,7 @@ REMOTE_VERSION=$(curl -s https://raw.githubusercontent.com/filipe1309/shubcogen/
 
 if [ "$REMOTE_VERSION" != "$LOCAL_VERSION" ]; then
         read -r -p "There is a new version of ShubCoGen script ($REMOTE_VERSION), do you want to update it? [Y/n] " response
-        response=${response,,} # tolower
+        response=$(echo "$response" | tr '[:upper:]' '[:lower:]') # tolower
         if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
             echo "Updating..."
             curl -o .shub/bin/links.txt --create-dirs https://raw.githubusercontent.com/filipe1309/shubcogen/main/.shub/bin/links.txt

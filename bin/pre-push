@@ -60,7 +60,7 @@ echo "---------------------------------------------"
 
 confirm() {
     read -r -p "${1:-Are you sure? [Y/n]} " response
-    response=${response,,} # tolower
+    response=$(echo "$response" | tr '[:upper:]' '[:lower:]') # tolower
     if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         echo "Ok"
     else
@@ -69,7 +69,7 @@ confirm() {
 }
 
 read -r -p "Update version ($type) from $VERSION to $NEW_VERSION? [Y/n]" response
-response=${response,,} # tolower
+response=$(echo "$response" | tr '[:upper:]' '[:lower:]') # tolower
 if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     echo "Updating..."
     sed -i "s/$VERSION/$NEW_VERSION/g" .shub/bin/version
