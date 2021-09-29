@@ -1,7 +1,7 @@
 # <p align="center">WIP | ShubcoGen™ 💀</p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Code-ShellScript-informational?style=flat-square&logo=gnubash&color=4EAA25" alt="Go" />
+    <img src="https://img.shields.io/badge/Code-ShellScript-informational?style=flat-square&logo=gnubash&color=4EAA25" alt="ShellScript" />
 </p>
 
 <hr>
@@ -107,7 +107,6 @@ cp bin/pre-push .git/hooks/pre-push
 
 ### :white_check_mark: Tests
 
-After up the container:
 
 ```sh
 ./test/bats/bin/bats test/test.bats
