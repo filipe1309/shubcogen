@@ -105,6 +105,14 @@ cd shubcogen
 cp bin/pre-push .git/hooks/pre-push
 ```
 
+### :white_check_mark: Tests
+
+After up the container:
+
+```sh
+./test/bats/bin/bats test/test.bats
+```
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
