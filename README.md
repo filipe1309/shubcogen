@@ -91,6 +91,20 @@ Push from your terminal to active auto-versioning & auto-tagging (from `pre-push
 
 Push with `deploy.sh` script.
 
+### :cd: Installation
+
+```sh
+git clone https://github.com/filipe1309/shubcogen.git
+```
+
+```sh
+cd shubcogen
+```
+
+```sh
+cp bin/pre-push .git/hooks/pre-push
+```
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
