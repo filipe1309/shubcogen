@@ -81,6 +81,7 @@ For example, if your actual branch is `my-branch-1.1`, after running this script
 - [ ] Simplify deploy script
 - [ ] Add an option to append an extra script to `deploy.sh` (like a `changelog.sh`)
 - [ ] Save deploy state (if an error occurs)
+- [ ] Add tests (with [Bat](https://github.com/bats-core/bats-core))
 
 ## :octocat: Contributing
 
