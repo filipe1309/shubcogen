@@ -1,6 +1,12 @@
 #!/bin/bash
 
+clear
+
 TEMPLATE_DIR=""
+
+if [ -z ${ENV} ]; then 
+    ENV="prod" 
+fi
 
 [ $ENV == "test" ] && echo "TEST MODE"
 [ $ENV != "test" ] && echo "NORMAL MODE"
@@ -10,9 +16,6 @@ if [ $ENV == "test" ]; then
     TEMPLATE_DIR="test/out/"
     # $1
 fi
-
-
-clear
 
 echo "---------------------------------------------"
 
