@@ -163,15 +163,15 @@ JSON_TEMPLATE='{
     response=$(echo "$response" | tr '[:upper:]' '[:lower:]') # tolower
     if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         # Update template
-        sed -i "s/{{ PROJECT_NAME }}/$PROJECT_NAME/g" README.md
-        sed -i "s/{{ COURSE_SOURCE }}/$COURSE_SOURCE/g" README.md
-        sed -i "s/{{ COURSE_NAME }}/$COURSE_NAME/g" README.md
-        sed -i "s,{{ COURSE_LINK }},$COURSE_LINK,g" README.md
-        sed -i "s,{{ COURSE_TYPE }},$COURSE_TYPE,g" README.md
-        sed -i "s/{{ PROJECT_REPO_NAME }}/$PROJECT_REPO_NAME/g" README.md
-        sed -i "s/{{ GITHUB_USER }}/$GITHUB_USER/g" README.md
-        sed -i "s/{{ GIT_USERNAME }}/$GIT_USERNAME/g" README.md
-        sed -i "s/{{ VERSION }}/$VERSION/g" README.md
+        sed -i '' -e "s/{{ PROJECT_NAME }}/$PROJECT_NAME/g" README.md
+        sed -i '' -e "s/{{ COURSE_SOURCE }}/$COURSE_SOURCE/g" README.md
+        sed -i '' -e "s/{{ COURSE_NAME }}/$COURSE_NAME/g" README.md
+        sed -i '' -e "s,{{ COURSE_LINK }},$COURSE_LINK,g" README.md
+        sed -i '' -e "s,{{ COURSE_TYPE }},$COURSE_TYPE,g" README.md
+        sed -i '' -e "s/{{ PROJECT_REPO_NAME }}/$PROJECT_REPO_NAME/g" README.md
+        sed -i '' -e "s/{{ GITHUB_USER }}/$GITHUB_USER/g" README.md
+        sed -i '' -e "s/{{ GIT_USERNAME }}/$GIT_USERNAME/g" README.md
+        sed -i '' -e "s/{{ VERSION }}/$VERSION/g" README.md
 
 # Save JSON config file
 cat <<EOF > shub-config.json

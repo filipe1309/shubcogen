@@ -72,7 +72,7 @@ read -r -p "Update version ($type) from $VERSION to $NEW_VERSION? [Y/n]" respons
 response=$(echo "$response" | tr '[:upper:]' '[:lower:]') # tolower
 if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
     echo "Updating..."
-    sed -i "s/$VERSION/$NEW_VERSION/g" .shub/bin/version
+    sed -i '' -e "s/$VERSION/$NEW_VERSION/g" .shub/bin/version
     git add .shub/bin/version
     git commit -m "chore: version updated"
     
