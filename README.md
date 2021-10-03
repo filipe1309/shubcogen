@@ -1,7 +1,7 @@
 # <p align="center">WIP | ShubcoGen™ 💀</p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Code-ShellScript-informational?style=flat-square&logo=gnubash&color=4EAA25" alt="Go" />
+    <img src="https://img.shields.io/badge/Code-ShellScript-informational?style=flat-square&logo=gnubash&color=4EAA25" alt="ShellScript" />
 </p>
 
 <hr>
@@ -81,6 +81,7 @@ For example, if your actual branch is `my-branch-1.1`, after running this script
 - [ ] Simplify deploy script
 - [ ] Add an option to append an extra script to `deploy.sh` (like a `changelog.sh`)
 - [ ] Save deploy state (if an error occurs)
+- [ ] Add tests (with [Bat](https://github.com/bats-core/bats-core))
 
 ## :octocat: Contributing
 
@@ -89,6 +90,27 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Push from your terminal to active auto-versioning & auto-tagging (from `pre-push` git hook).
 
 Push with `deploy.sh` script.
+
+### :cd: Installation
+
+```sh
+git clone https://github.com/filipe1309/shubcogen.git
+```
+
+```sh
+cd shubcogen
+```
+
+```sh
+cp bin/pre-push .git/hooks/pre-push
+```
+
+### :white_check_mark: Tests
+
+
+```sh
+./test/bats/bin/bats test/test.bats
+```
 
 ## License
 

@@ -1,3 +1,3 @@
 #!/bin/bash
 
- git ps && git ps --tags --no-verify
+ git push && git push --tags --no-verify
