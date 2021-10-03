@@ -6,6 +6,7 @@ exec 0< /dev/tty
 
 .shub/bin/shub-logo.sh
 source .shub/bin/colors.sh        
+source .shub/bin/helpers.sh
 
 echo "---------------------------------------------"
 
@@ -162,6 +163,13 @@ JSON_TEMPLATE='{
     read -r -p "Accept configs [$(echo -e $BG_GREEN"Y"$NO_BG)/n]? " response
     response=${response,,} # tolower
     if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
+        # Escape strings
+        PROJECT_NAME=$(parse_string "$PROJECT_NAME")
+        COURSE_SOURCE=$(parse_string "$COURSE_SOURCE")
+        COURSE_NAME=$(parse_string "$COURSE_NAME")
+        COURSE_LINK=$(parse_string "$COURSE_LINK")
+        COURSE_TYPE=$(parse_string "$COURSE_TYPE")
+
         # Update template
         sed -i "s/{{ PROJECT_NAME }}/$PROJECT_NAME/g" README.md
         sed -i "s/{{ COURSE_SOURCE }}/$COURSE_SOURCE/g" README.md

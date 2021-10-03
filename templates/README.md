@@ -18,7 +18,7 @@
 
 ## 💬 About
 
-This project was developed following {{ COURSE_SOURCE }} "[{{ COURSE_NAME }}]({{ COURSE_LINK }})" {{ COURSE_TYPE }}.
+This project was developed following {{ COURSE_SOURCE }}'s "[{{ COURSE_NAME }}]({{ COURSE_LINK }})" {{ COURSE_TYPE }}.
 
 ## :computer: Technologies
 

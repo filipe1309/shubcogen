@@ -29,3 +29,8 @@ function confirm() {
         exit 0;
     fi
 }
+
+function parse_string() {
+    echo $(printf '%s\n' "$1" | sed -e 's/[\/&]/\\&/g')
+}
+
